@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Guru.Fragment.RaportSiswaGuru"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Kelas"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textColor="@android:color/black"/>
+    <Spinner
+        android:id="@+id/SpinnerKelasGuru"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+
+    <AutoCompleteTextView
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:hint="Masukan Nomor Induk Siswa"
+        android:id="@+id/ACTNISGuru"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/tvNamaSiswaRaportGuru"
+        tools:text="Muhammad Supriyadi"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnCheckRaport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Raport"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>

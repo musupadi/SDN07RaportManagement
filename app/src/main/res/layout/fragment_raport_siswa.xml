@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Siswa.Fragment.RaportSiswaFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:padding="2dp"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/ivPhotoSiswaFinal"
+            android:layout_marginBottom="4dp"
+            tools:src="@color/colorAccent"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Tanggal"/>
+                <TextView
+                    android:id="@+id/tvTglSekarangFinal"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="15 Januari 1994"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Nomor Induk Siswa"/>
+                <TextView
+                    android:id="@+id/tvNISFinalGuru"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="123456"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Nama"/>
+                <TextView
+                    android:id="@+id/tvNamaSiswaFinalGuru"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Bilkhis"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Kelas"/>
+                <TextView
+                    android:id="@+id/tvKelasFinalGuru"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Bilkhis"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Mata Pelajaran"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Nilai"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Grade"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Guru Pengajar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerFinalNilai"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TableLayout
+            android:padding="5dp"
+            android:layout_below="@+id/recyclerFinalNilai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Sakit"/>
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text=" : "/>
+                <TextView
+                    android:id="@+id/tvSakitSiswa"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="1"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Izin"/>
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text=" : "/>
+                <TextView
+                    android:id="@+id/tvIzinSiswa"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Izin"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Tanpa Keterangan"/>
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text=" : "/>
+                <TextView
+                    android:id="@+id/tvAlpaSiswa"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Bilkhis"/>
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>
