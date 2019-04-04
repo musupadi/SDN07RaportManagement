@@ -31,6 +31,7 @@ import com.destinyapp.aplikasisdn07.Guru.Fragment.AbsensiSiswaGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.AllClassFragmentGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.AllSiswaInKelasGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.GuruMengajarFragment;
+import com.destinyapp.aplikasisdn07.Guru.Fragment.NilaiFragmentGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.PemberianNilaiFragment;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.RaportFinalSiswaGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.RaportSiswaGuru;
@@ -177,7 +178,7 @@ public class MainGuruActivity extends AppCompatActivity
         } else if (id == R.id.nav_absenGuru) {
             fragment = new AbsenSiswaGuru();
         } else if (id == R.id.nav_penilaianGuru) {
-            fragment = new AllClassFragmentGuru();
+            fragment = new NilaiFragmentGuru();
         }else if (id == R.id.nav_raportGuru) {
             fragment = new RaportSiswaGuru();
         } else if (id == R.id.nav_tugasGuru) {

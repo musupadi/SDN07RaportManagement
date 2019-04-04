@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ import retrofit2.Response;
 public class RaportSiswaGuru extends Fragment {
     Spinner Kelas;
     AutoCompleteTextView NIS;
-    TextView NamaSiswa;
+    EditText NamaSiswa;
     Button btnCheck;
     private List<DataModel> aList = new ArrayList<>();
     private AdapterKelasSpinner aSpinner;
@@ -63,7 +64,7 @@ public class RaportSiswaGuru extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Kelas = (Spinner)view.findViewById(R.id.SpinnerKelasGuru);
         NIS = (AutoCompleteTextView)view.findViewById(R.id.ACTNISGuru);
-        NamaSiswa = (TextView)view.findViewById(R.id.tvNamaSiswaRaportGuru);
+        NamaSiswa = (EditText) view.findViewById(R.id.tvNamaSiswaRaportGuru);
         btnCheck = (Button)view.findViewById(R.id.btnCheckRaport);
 
         //Logic
@@ -134,21 +135,21 @@ public class RaportSiswaGuru extends Fragment {
         });
     }
     private void getAutoText(String idKelas){
-        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getAuto = api.getAllSiswaFromGuru(idKelas);
-        getAuto.enqueue(new Callback<ResponseModel>() {
-            @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                aList = response.body().getResult();
-                AdapterNIS adapterNIS = new AdapterNIS(getActivity(),aList);
-                NIS.setAdapter(adapterNIS);
-            }
+            ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+            Call<ResponseModel> getAuto = api.getAllSiswaFromGuru(idKelas);
+            getAuto.enqueue(new Callback<ResponseModel>() {
+                @Override
+                public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                    aList = response.body().getResult();
+                    AdapterNIS adapterNIS = new AdapterNIS(getActivity(),aList);
+                    NIS.setAdapter(adapterNIS);
+                }
 
-            @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(),"Data Error pada getAutoText Method",Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseModel> call, Throwable t) {
+                    Toast.makeText(getActivity(),"Data Error pada getAutoText Method",Toast.LENGTH_SHORT).show();
+                }
+            });
     }
     private void getNamaFromNIS(String nis){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
