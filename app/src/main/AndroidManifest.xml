@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.destinyapp.aplikasisdn07">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Admin.MainAdminActivity"
+            android:label="@string/title_activity_main_admin"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Siswa.MainSiswaActivity"
             android:label="@string/title_activity_main_siswa"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Guru.MainGuruActivity"
             android:label="@string/title_activity_main_guru"

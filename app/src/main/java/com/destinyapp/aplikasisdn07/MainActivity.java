@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.destinyapp.aplikasisdn07.Admin.MainAdminActivity;
+import com.destinyapp.aplikasisdn07.Fragment.LoginAdminFragment;
 import com.destinyapp.aplikasisdn07.Fragment.LoginGuruFragment;
 import com.destinyapp.aplikasisdn07.Fragment.LoginSiswaFragment;
 import com.destinyapp.aplikasisdn07.Guru.MainGuruActivity;
@@ -28,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_guru:
                     selectedFragment = new LoginGuruFragment();
                     break;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_siswa:
                     selectedFragment = new LoginSiswaFragment();
+                    break;
+                case R.id.navigation_admin:
+                    selectedFragment = new LoginAdminFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_Login_Count,
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_Login_Count,
-                new LoginGuruFragment()).commit();
+                new LoginAdminFragment()).commit();
 
         dbHelper = new DB_Helper(this);
         Cursor cursor = dbHelper.checkSession();
@@ -64,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else if(person.equals("Siswa")){
                     Intent intent = new Intent(MainActivity.this, MainSiswaActivity.class);
+                    startActivity(intent);
+                }else if(person.equals("Admin")){
+                    Intent intent = new Intent(MainActivity.this, MainAdminActivity.class);
                     startActivity(intent);
                 }else{
                     Toast.makeText(this,"Terjadi Kesalahan pada Session"+user,Toast.LENGTH_SHORT).show();

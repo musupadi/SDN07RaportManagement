@@ -133,4 +133,13 @@ public interface ApiRequest {
     @POST("getRaport.php")
     Call<ResponseModel> getRaportData(@Field("nis") String nis);
 
+    @FormUrlEncoded
+    @POST("AdminLogin.php")
+    Call<ResponseModel> getAdminLogin(@Field("username") String username,
+                                      @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("getDataAdmin.php")
+    Call<ResponseModel> getDataAdmin(@Field("username") String username);
+
 }

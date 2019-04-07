@@ -9,6 +9,7 @@ public class DataModel {
     String nis,nama_siswa,jk_siswa,tahunajaran,namaibu,namaayah,pekerjaanibu,pekerjaanayah,profile_siswa;
     String nilai;
     String izin,alpa,sakit;
+    String username,nama_admin,profile_admin;
     public String getNip() {
         return nip;
     }
@@ -311,5 +312,29 @@ public class DataModel {
 
     public void setSakit(String sakit) {
         this.sakit = sakit;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNama_admin() {
+        return nama_admin;
+    }
+
+    public void setNama_admin(String nama_admin) {
+        this.nama_admin = nama_admin;
+    }
+
+    public String getProfile_admin() {
+        return profile_admin;
+    }
+
+    public void setProfile_admin(String profile_admin) {
+        this.profile_admin = profile_admin;
     }
 }

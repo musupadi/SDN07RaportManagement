@@ -14,7 +14,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/navHeaderPPGuru"
+        android:id="@+id/navHeaderPPAdmin"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -22,7 +22,7 @@
         tools:src="@android:color/darker_gray"/>
 
     <TextView
-        android:id="@+id/tvNamaGuruHeader"
+        android:id="@+id/tvNamaAdminHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -30,7 +30,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/tvUsernameGurusHeader"
+        android:id="@+id/tvUsernameAdminHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_subtitle" />

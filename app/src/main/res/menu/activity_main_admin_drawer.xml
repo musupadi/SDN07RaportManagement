@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_guru_admin"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Data Guru" />
+        <item
+            android:id="@+id/nav_siswa_admin"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Data Siswa" />
+        <item
+            android:id="@+id/nav_mataPelajaran_admin"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Data Mata Pelajaran" />
+        <item
+            android:id="@+id/nav_kelas_admin"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Data Kelas" />
+        <item
+            android:id="@+id/nav_jadwal_admin"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Data Jadwal" />
+        <item
+            android:id="@+id/nav_penilaianAdmin"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Data Nilai" />
+    </group>
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_data_diri_admin"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Data Diri Admin" />
+            <item
+                android:id="@+id/nav_logout_admin"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

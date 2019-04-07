@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AplikasiSDN07</string>
     <string name="title_home">Home</string>
+    <string name="title_admin">Admin</string>
     <string name="title_guru">Guru</string>
     <string name="title_siswa">Siswa</string>
     <string name="base_url">http://192.168.0.3/AplikasiSDN07/</string>
@@ -14,4 +15,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_siswa">MainSiswaActivity</string>
+    <string name="title_activity_main_admin">MainAdminActivity</string>
+
+    <string-array name="jk">
+        <item>Pria</item>
+        <item>Wanita</item>
+    </string-array>
 </resources>
