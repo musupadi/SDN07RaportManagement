@@ -4,7 +4,7 @@
     <string name="title_admin">Admin</string>
     <string name="title_guru">Guru</string>
     <string name="title_siswa">Siswa</string>
-    <string name="base_url">http://192.168.0.3/AplikasiSDN07/</string>
+    <string name="base_url">http://192.168.0.23/AplikasiSDN07/</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_guru">MainGuruActivity</string>

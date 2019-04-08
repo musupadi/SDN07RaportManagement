@@ -70,6 +70,9 @@ public interface ApiRequest {
     @GET("getAllClass.php")
     Call<ResponseModel> getKelas();
 
+    @GET("getAllDataGuru.php")
+    Call<ResponseModel> getAllDataGuru();
+
     @FormUrlEncoded
     @POST("getAllSiswaFromClassGuru.php")
     Call<ResponseModel> getAllSiswaFromGuru(@Field("id_kelas") String id_kelas);
@@ -142,4 +145,18 @@ public interface ApiRequest {
     @POST("getDataAdmin.php")
     Call<ResponseModel> getDataAdmin(@Field("username") String username);
 
+    @FormUrlEncoded
+    @POST("InsertDataGuru.php")
+    Call<ResponseModel> insrertDataGuru(@Field("nip") String nip,
+                                        @Field("password") String password,
+                                        @Field("nama") String nama,
+                                        @Field("tempatlahir") String tempatlahir,
+                                        @Field("tanggalahir") String tanggalahir,
+                                        @Field("agama") String agama,
+                                        @Field("notelp") String notelp,
+                                        @Field("jabatan") String jabatan,
+                                        @Field("pendidikan") String pendidikan,
+                                        @Field("jk") String jk,
+                                        @Field("pictureguru") String pictureguru,
+                                        @Field("alamat") String alamat);
 }
