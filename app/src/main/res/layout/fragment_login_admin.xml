@@ -5,65 +5,70 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.LoginAdminFragment">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
-        <ImageView
-            android:id="@+id/ivGambar"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/logosd"
-            android:layout_centerHorizontal="true"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="18dp"/>
-        <TextView
-            android:paddingTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvAdminLogin"
-            android:text="Login Admin"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/ivGambar"
-            android:paddingBottom="30dp"/>
+        android:padding="10dp"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etUsernameAdminLogin"
-            android:layout_below="@+id/tvAdminLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Username"
-            android:minWidth="250dp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:ems="10"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2">
+            <ImageView
+                android:id="@+id/ivGambar"
+                android:src="@drawable/logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/etPasswordAdminLogin"
-            android:layout_below="@+id/etUsernameAdminLogin"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:minWidth="250dp"
-            android:ems="10"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAdminLogin"
+                android:text="Login Admin"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:textColor="@color/PureBlack"/>
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/etUsernameAdminLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="250dp"
+                android:layout_gravity="center"
+                android:hint="Username"
+                android:gravity="center" />
 
-        <Button
-            android:layout_below="@+id/etPasswordAdminLogin"
-            android:layout_centerHorizontal="true"
-            android:minWidth="160dp"
-            android:text="Login"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAddLoginAdmin"/>
+            <EditText
+                android:id="@+id/etPasswordAdminLogin"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_width="wrap_content"
+                android:minWidth="250dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
 
-    </RelativeLayout>
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:minWidth="160dp"
+                android:text="Login"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddLoginAdmin"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

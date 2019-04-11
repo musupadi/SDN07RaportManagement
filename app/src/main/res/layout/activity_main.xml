@@ -10,7 +10,9 @@
     <FrameLayout
         android:id="@+id/Fragment_Login_Count"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

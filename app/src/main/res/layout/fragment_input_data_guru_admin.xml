@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.Fragment.InputDataGuruAdmin"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masukan Input Data Guru"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/PureBlack"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etNIPGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan NIP Guru"/>
+            <EditText
+                android:id="@+id/etPasswordGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Password Guru"
+                android:inputType="textPassword"/>
+            <EditText
+                android:id="@+id/etNamaGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Nama Lengkap dan Gelar"/>
+            <EditText
+                android:id="@+id/etTempatLahirGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tempat Lahir"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:inputType="number"
+                    android:id="@+id/etTglLahirGuruAdmin"
+                    android:hint="Tanggal Lahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <EditText
+                    android:inputType="number"
+                    android:id="@+id/etBulanLahirGuruAdmin"
+                    android:hint="Bulan Lahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <EditText
+                    android:inputType="number"
+                    android:id="@+id/etTahunLahirGuruAdmin"
+                    android:hint="Tahun Lahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/etAgamaGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Agama Guru"/>
+            <EditText
+                android:inputType="number"
+                android:id="@+id/etTeleponGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Nomor Telepon Guru"/>
+            <EditText
+                android:id="@+id/etJabatanGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Jabatan Guru"/>
+            <EditText
+                android:id="@+id/etPendidikanGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Pendidikan Terakhir Guru"/>
+            <Spinner
+                android:id="@+id/SpinnerKelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <EditText
+                android:id="@+id/etAlamatGuruAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukan Alamat Guru"/>
+            <Button
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/btnInputDataGuruAdmin"
+                android:text="Input Data Guru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

@@ -45,7 +45,7 @@ public class AdapterDataGuruAdmin extends RecyclerView.Adapter<AdapterDataGuruAd
         holderData.jabatan.setText(dm.getJabatan());
         holderData.jk.setText(dm.getJk());
         holderData.alamat.setText(dm.getAlamat());
-        String BASE_URL = "http://192.168.0.23/AplikasiSDN07/";
+        String BASE_URL = ctx.getString(R.string.base_url);
         String URL = BASE_URL+"ProfilePicture/Guru/"+dm.getPictureguru();
         Glide.with(ctx)
                 .load(URL)

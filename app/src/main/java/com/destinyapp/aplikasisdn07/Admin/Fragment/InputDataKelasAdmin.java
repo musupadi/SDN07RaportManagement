@@ -30,13 +30,14 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DataMataPelajaranAdmin extends Fragment {
+public class InputDataKelasAdmin extends Fragment {
 
-    EditText NamaMapel;
     Spinner tingkatkelas;
+    EditText namaKelas;
     Button insert;
     String tingkatKelas;
-    public DataMataPelajaranAdmin() {
+
+    public InputDataKelasAdmin() {
         // Required empty public constructor
     }
 
@@ -45,15 +46,16 @@ public class DataMataPelajaranAdmin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data_mata_pelajaran_admin, container, false);
+        return inflater.inflate(R.layout.fragment_input_data_kelas_admin, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        NamaMapel = (EditText)view.findViewById(R.id.etNamaMapelAdmin);
         tingkatkelas = (Spinner)view.findViewById(R.id.SpinnerTingkatKelas);
-        insert = (Button)view.findViewById(R.id.btnInputDataMapelAdmin);
+        namaKelas = (EditText)view.findViewById(R.id.etNamaKelasAdmin);
+        insert = (Button)view.findViewById(R.id.btnInputDataKelasAdmin);
+
         List<String> TK = new ArrayList<>();
         TK.add(0,"Pilih Tingkat Kelas");
         TK.add("1");
@@ -80,16 +82,17 @@ public class DataMataPelajaranAdmin extends Fragment {
 
             }
         });
+
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                insertDataKelas();
             }
         });
     }
-    private void insertData(){
+    private void insertDataKelas(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getInsertKelas = api.insertDataKelas(NamaMapel.getText().toString(),
+        Call<ResponseModel> getInsertKelas = api.insertDataKelas(namaKelas.getText().toString(),
                 tingkatKelas);
         getInsertKelas.enqueue(new Callback<ResponseModel>() {
             @Override

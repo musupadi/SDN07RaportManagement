@@ -43,4 +43,8 @@
         </menu>
     </item>
 
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_menu_send"
+        android:title="About" />
 </menu>

@@ -3,134 +3,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Admin.Fragment.DataGuruAdmin"
     android:orientation="vertical">
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Masukan Input Data Guru"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="20dp"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <LinearLayout
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/etNIPGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan NIP Guru"/>
-            <EditText
-                android:id="@+id/etPasswordGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Password Guru"
-                android:inputType="textPassword"/>
-            <EditText
-                android:id="@+id/etNamaGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Nama Lengkap dan Gelar"/>
-            <EditText
-                android:id="@+id/etTempatLahirGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tempat Lahir"/>
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            card_view:cardCornerRadius="4dp"
+            android:background="@color/colorPrimary"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <EditText
-                    android:inputType="number"
-                    android:id="@+id/etTglLahirGuruAdmin"
-                    android:hint="Tanggal Lahir"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:inputType="number"
-                    android:id="@+id/etBulanLahirGuruAdmin"
-                    android:hint="Bulan Lahir"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:inputType="number"
-                    android:id="@+id/etTahunLahirGuruAdmin"
-                    android:hint="Tahun Lahir"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mencari Data Guru"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/PureBlack"/>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nama Guru"
+                        android:gravity="center"
+                        android:textColor="@color/PureBlack"/>
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="NIP Guru"
+                        android:gravity="center"/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Mencari"
+                        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+                </LinearLayout>
             </LinearLayout>
-            <EditText
-                android:id="@+id/etAgamaGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Agama Guru"/>
-            <EditText
-                android:inputType="number"
-                android:id="@+id/etTeleponGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Nomor Telepon Guru"/>
-            <EditText
-                android:id="@+id/etJabatanGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Jabatan Guru"/>
-            <EditText
-                android:id="@+id/etPendidikanGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Pendidikan Terakhir Guru"/>
-            <Spinner
-                android:id="@+id/SpinnerKelamin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </Spinner>
-            <EditText
-                android:id="@+id/etAlamatGuruAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukan Alamat Guru"/>
-            <Button
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:id="@+id/btnInputDataGuruAdmin"
-                android:text="Input Data Guru"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </ScrollView>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:orientation="vertical">
-        <TextView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Data Guru"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20dp"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerDataGuruAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            card_view:cardCornerRadius="4dp"
+            android:background="@color/colorPrimary"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Guru"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:textColor="@color/PureBlack"
+                    android:paddingBottom="5dp"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerDataGuruAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
     </LinearLayout>
-
-
-
 
 </LinearLayout>

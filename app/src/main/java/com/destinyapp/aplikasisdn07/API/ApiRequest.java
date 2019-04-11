@@ -83,7 +83,7 @@ public interface ApiRequest {
 
     @FormUrlEncoded
     @POST("getMapel.php")
-    Call<ResponseModel> getMapel(@Field("id_kelas") String id_kelas);
+    Call<ResponseModel> getMapel(@Field("tingkat_kelas") String tingkat_kelas);
 
     @FormUrlEncoded
     @POST("getIDMapel.php")
@@ -159,4 +159,41 @@ public interface ApiRequest {
                                         @Field("jk") String jk,
                                         @Field("pictureguru") String pictureguru,
                                         @Field("alamat") String alamat);
+
+    @FormUrlEncoded
+    @POST("InsertDataSiswa.php")
+    Call<ResponseModel> insertDataSiswa(@Field("nis") String nis,
+                                        @Field("nama_siswa") String nama_siswa,
+                                        @Field("jk_siswa") String jk_siswa,
+                                        @Field("tahunajaran") String tahunajaran,
+                                        @Field("namaibu") String namaibu,
+                                        @Field("namaayah") String namaayah,
+                                        @Field("pekerjaanayah") String pekerjaanayah,
+                                        @Field("pekerjaanibu") String pekerjaanibu,
+                                        @Field("id_kelas") String id_kelas,
+                                        @Field("profile_siswa") String profile_siswa);
+
+    @FormUrlEncoded
+    @POST("InsertDataJadwal.php")
+    Call<ResponseModel> insertDataJadwal(@Field("nip") String nip,
+                                        @Field("id_kelas") String id_kelas,
+                                        @Field("id_mapel") String id_mapel,
+                                        @Field("hari") String hari,
+                                        @Field("dari_jam") String dari_jam,
+                                        @Field("sampai_jam") String sampai_jam);
+
+    @FormUrlEncoded
+    @POST("InsertDataKelas.php")
+    Call<ResponseModel> insertDataKelas(@Field("nama_kelas") String nama_kelas,
+                                        @Field("tingkat_kelas") String tingkat_kelas);
+
+    @FormUrlEncoded
+    @POST("InsertDataMapel.php")
+    Call<ResponseModel> insertDataMapel(@Field("nama_mapel") String nama_mapel,
+                                        @Field("tingkat_kelas") String tingkat_kelas);
+
+    @FormUrlEncoded
+    @POST("getGuruFromNama.php")
+    Call<ResponseModel> getGuru(@Field("nama") String nama,
+                                        @Field("nip") String nip);
 }

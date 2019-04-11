@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Admin.Fragment.DataMataPelajaranAdmin"
+        tools:context=".Admin.Fragment.InputDataGuruAdmin"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -29,10 +29,10 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/etNamaMapelAdmin"
+                    android:id="@+id/etNamaKelasAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Nama Mata Pelajaran"/>
+                    android:hint="Masukan Nama Kelas"/>
                 <Spinner
                     android:id="@+id/SpinnerTingkatKelas"
                     android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 <Button
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:id="@+id/btnInputDataMapelAdmin"
+                    android:id="@+id/btnInputDataKelasAdmin"
                     android:text="Input Data Kelas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

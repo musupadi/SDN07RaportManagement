@@ -68,10 +68,11 @@ public class PemberianNilaiFragment extends Fragment {
         isiNilai = (EditText)view.findViewById(R.id.etIsiNilai);
         String idNama = this.getArguments().getString("KEY_NAMA").toString();
         final String idKelas = this.getArguments().getString("KEY_ID_KELAS").toString();
+        final String tingkatKelas = this.getArguments().getString("KEY_TINGKAT_KELAS").toString();
         final String nis = this.getArguments().getString("KEY_NIS").toString();
-        NomorIndukSiswa.setText(nis);
+        NomorIndukSiswa.setText(tingkatKelas);
         NamaSiswa.setText(idNama);
-
+        Toast.makeText(getActivity(),tingkatKelas,Toast.LENGTH_SHORT).show();
 
         //Logic
         getNamaKelas(idKelas);

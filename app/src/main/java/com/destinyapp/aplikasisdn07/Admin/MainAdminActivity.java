@@ -26,12 +26,18 @@ import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataGuruAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.DataSiswaAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataGuruAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.DataJadwalAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataKelasAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.DataMataPelajaranAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataSiswaAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.MainGuruAdmin;
+import com.destinyapp.aplikasisdn07.Fragment.AboutFragment;
 import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
 import com.destinyapp.aplikasisdn07.Session.DB_Helper;
-import com.destinyapp.aplikasisdn07.Siswa.Fragment.JadwalBelajarSiswaFragment;
-import com.destinyapp.aplikasisdn07.Siswa.MainSiswaActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -88,8 +94,34 @@ public class MainAdminActivity extends AppCompatActivity
         navUsername.setText("Username : "+User);
 
         Fragment fragment = null;
-        fragment = new DataGuruAdmin();
+        fragment = new MainGuruAdmin();
+
+
+        //IF ELSE
+        Intent data = getIntent();
+        String inputGuru = data.getStringExtra("INPUT_GURU");
+        String outputGuru = data.getStringExtra("OUTPUT_GURU");
+        String inputSiswa = data.getStringExtra("INPUT_SISWA");
+        String outputSiswa = data.getStringExtra("OUTPUT_SISWA");
+        String inputKelas = data.getStringExtra("INPUT_KELAS");
+        String outputKelas = data.getStringExtra("OUTPUT_KELAS");
+        if (inputGuru != null){
+            fragment=new InputDataGuruAdmin();
+        }else if(outputGuru != null){
+            fragment=new DataGuruAdmin();
+        }else if(inputSiswa != null){
+            fragment=new InputDataSiswaAdmin();
+        }else if(outputSiswa != null){
+            fragment=new DataSiswaAdmin();
+        }else if(inputKelas !=null){
+            fragment=new InputDataKelasAdmin();
+        }else if(outputKelas !=null){
+
+        }
+
+        //DONE
         ChangeFragment(fragment);
+
 
     }
 
@@ -129,26 +161,30 @@ public class MainAdminActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment fragment = null;
         int id = item.getItemId();
 
         if (id == R.id.nav_guru_admin) {
-            // Handle the camera action
+            fragment=new MainGuruAdmin();
         } else if (id == R.id.nav_siswa_admin) {
-
+            fragment=new InputDataSiswaAdmin();
         } else if (id == R.id.nav_mataPelajaran_admin) {
-
+            fragment=new DataMataPelajaranAdmin();
         } else if (id == R.id.nav_kelas_admin) {
-
+            fragment=new InputDataKelasAdmin();
         } else if (id == R.id.nav_jadwal_admin) {
-
+            fragment=new DataJadwalAdmin();
         } else if (id == R.id.nav_penilaianAdmin) {
 
         } else if (id == R.id.nav_data_diri_admin) {
 
         }else if (id == R.id.nav_logout_admin) {
-
+            logout();
+        }else if (id == R.id.nav_about) {
+            fragment=new AboutFragment();
         }
 
+        ChangeFragment(fragment);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
