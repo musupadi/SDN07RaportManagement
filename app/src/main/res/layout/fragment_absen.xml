@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".Admin.Fragment.DataGuruAdmin"
+    tools:context=".Admin.Fragment.DataSiswaAdmin"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -29,9 +29,10 @@
                 android:padding="30dp">
 
                 <TextView
+                    android:id="@+id/TittleAbsen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mencari Data Guru"
+                    android:text="Mencari Data Siswa"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textSize="20dp"
@@ -46,11 +47,11 @@
                     android:textColorHint="@color/colorAccent">
 
                     <AutoCompleteTextView
-                        android:id="@+id/etNIP"
+                        android:id="@+id/etNIS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:hint="Masukan NIP Guru"/>
+                        android:hint="Masukan Nomor Induk Siswa"/>
                 </android.support.design.widget.TextInputLayout>
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -60,11 +61,11 @@
                     android:textColorHint="@color/colorAccent">
 
                     <AutoCompleteTextView
-                        android:id="@+id/etNamaGuru"
+                        android:id="@+id/etNamaSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:hint="Masukan Nama Guru"/>
+                        android:hint="Masukan Nama Siswa"/>
                 </android.support.design.widget.TextInputLayout>
                 <Button
                     android:id="@+id/btnInput"
@@ -76,16 +77,14 @@
                     android:background="@drawable/button_rounded_primary"/>
             </LinearLayout>
         </ScrollView>
-
-
     </android.support.v7.widget.CardView>
-        <android.support.v7.widget.RecyclerView
-            android:layout_weight="1"
-            android:id="@+id/recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-        </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

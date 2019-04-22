@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:text="Cari Data"
                     android:textSize="20sp"
-                    android:background="@drawable/button_rounded"/>
+                    android:background="@drawable/button_rounded_primary"/>
             </LinearLayout>
         </ScrollView>
     </android.support.v7.widget.CardView>

@@ -8,7 +8,7 @@ public class DataModel {
     String status,tanggal_masuk;
     String nis,nama_siswa,jk_siswa,tahunajaran,namaibu,namaayah,pekerjaanibu,pekerjaanayah,profile_siswa;
     String nilai;
-    String izin,alpa,sakit;
+    String izin,alpa,sakit,verif;
     String username,nama_admin,profile_admin;
     public String getNip() {
         return nip;
@@ -336,5 +336,13 @@ public class DataModel {
 
     public void setProfile_admin(String profile_admin) {
         this.profile_admin = profile_admin;
+    }
+
+    public String getVerif() {
+        return verif;
+    }
+
+    public void setVerif(String verif) {
+        this.verif = verif;
     }
 }

@@ -12,6 +12,10 @@
             android:id="@+id/nav_check"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Check Data" />
+        <item
+            android:id="@+id/nav_verif"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Verivikasi Data" />
     </group>
 
     <item android:title="Account">

@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:text="Input Data Guru"
                 android:textSize="22sp"
-                android:background="@drawable/button_rounded"/>
+                android:background="@drawable/button_rounded_primary"/>
         </LinearLayout>
     </ScrollView>
 

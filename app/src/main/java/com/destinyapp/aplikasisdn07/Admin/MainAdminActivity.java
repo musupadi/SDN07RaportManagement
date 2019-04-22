@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.Absen;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.CheckAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataGuruAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataJadwalAdmin;
@@ -37,6 +38,8 @@ import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataJadwal;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataKelasAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataMapel;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataSiswaAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.UpdateAbsensi;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.VerifAdminDashboard;
 import com.destinyapp.aplikasisdn07.Fragment.AboutFragment;
 import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
@@ -113,6 +116,9 @@ public class MainAdminActivity extends AppCompatActivity
         String outputJadwal = data.getStringExtra("OUTPUT_JADWAL");
         String inputMapel = data.getStringExtra("INPUT_MAPEL");
         String outputMapel = data.getStringExtra("OUTPUT_MAPEL");
+        String Absen = data.getStringExtra("ABSEN");
+        String Absensi = data.getStringExtra("ABSENSI");
+        String NIS = data.getStringExtra("NIS");
         if (inputGuru != null){
             fragment=new InputDataGuruAdmin();
         }else if(outputGuru != null){
@@ -133,6 +139,18 @@ public class MainAdminActivity extends AppCompatActivity
             fragment=new InputDataMapel();
         }else if(outputMapel !=null){
             fragment=new DataMataPelajaranAdmin();
+        }else if(Absen !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("ABSEN",Absen);
+            fragment = new Absen();
+            fragment.setArguments(bundle);
+
+        }else if(Absensi !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("ABSENSI",Absensi);
+            bundle.putString("NIS",NIS);
+            fragment = new UpdateAbsensi();
+            fragment.setArguments(bundle);
         }
 
         //DONE
@@ -184,7 +202,9 @@ public class MainAdminActivity extends AppCompatActivity
             fragment=new InputAdminDashboard();
         } else if (id == R.id.nav_check) {
             fragment=new CheckAdminDashboard();
-        } else if (id == R.id.nav_data_diri_admin) {
+        } else if (id == R.id.nav_verif) {
+            fragment=new VerifAdminDashboard();
+        } else if(id == R.id.nav_data_diri_admin){
 
         }else if (id == R.id.nav_logout_admin) {
             logout();

@@ -10,7 +10,7 @@ public class ResponseModel {
     String nama_mapel,kelas;
     String status,tanggal_masuk;
     String nis,nama_siswa,jk_siswa,tahunajaran,namaibu,namaayah,pekerjaanibu,pekerjaanayah,profile_siswa;
-    String nilai;
+    String nilai,verif;
     String izin,alpa,sakit;
     String username,nama_admin,profile_admin;
 
@@ -368,5 +368,13 @@ public class ResponseModel {
 
     public void setProfile_admin(String profile_admin) {
         this.profile_admin = profile_admin;
+    }
+
+    public String getVerif() {
+        return verif;
+    }
+
+    public void setVerif(String verif) {
+        this.verif = verif;
     }
 }
