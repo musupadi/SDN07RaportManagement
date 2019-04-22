@@ -1,75 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:layout_gravity="center"
     tools:context=".Admin.Fragment.InputDataKelasAdmin">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Admin.Fragment.InputDataGuruAdmin"
-        android:orientation="vertical">
-        <TextView
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/etNamaKelas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Masukan Input Data Siswa"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20dp"/>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/etNamaKelasAdmin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Masukan Nama Kelas"/>
-                <Spinner
-                    android:id="@+id/SpinnerTingkatKelas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </Spinner>
-                <Button
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:id="@+id/btnInputDataKelasAdmin"
-                    android:text="Input Data Kelas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </ScrollView>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Data Kelas"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="20dp"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerDataSiswaAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-</FrameLayout>
+            android:hint="Masukan Nama Kelas"
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="20sp"/>
+    </android.support.design.widget.TextInputLayout>
+    <Spinner
+        android:id="@+id/spinnerTingkatKelas"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+    </Spinner>
+    
+    <Button
+        android:id="@+id/btnInput"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Input Data Kelas"
+        android:textSize="22sp"
+        android:background="@drawable/button_rounded"/>
+</LinearLayout>

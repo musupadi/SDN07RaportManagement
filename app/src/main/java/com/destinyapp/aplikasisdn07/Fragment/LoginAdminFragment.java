@@ -53,9 +53,9 @@ public class LoginAdminFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        username = (EditText)view.findViewById(R.id.etUsernameAdminLogin);
-        password = (EditText)view.findViewById(R.id.etPasswordAdminLogin);
-        Login = (Button)view.findViewById(R.id.btnAddLoginAdmin);
+        username = (EditText)view.findViewById(R.id.etUsername);
+        password = (EditText)view.findViewById(R.id.etPassword);
+        Login = (Button)view.findViewById(R.id.btnLogin);
         dbHelper = new DB_Helper(getActivity());
         Login.setOnClickListener(new View.OnClickListener() {
             @Override

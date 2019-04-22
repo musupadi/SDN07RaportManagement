@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.Fragment.MainSiswaAdmin"
+    tools:context=".Admin.Fragment.MainGuruAdmin"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -20,11 +20,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/belumVerifNilai"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/responsive"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Nilai Yang Belum Terverivikasi"
+                    android:textSize="20dp"
+                    android:layout_gravity="start"
+                    android:gravity="top|center"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/sudahVerifNilai"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/teamwork"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Nilai Yang Sudah Terverivikasi"
+                    android:textSize="20dp"
+                    android:layout_gravity="start"
+                    android:gravity="top|center"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/inputData"
@@ -41,7 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Input Data Guru"
+                    android:text="Absen Yang Belum Terverivikasi"
                     android:textSize="20dp"
                     android:layout_gravity="start"
                     android:gravity="top|center"
@@ -56,13 +108,13 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/boy"
+                    android:src="@drawable/teamwork"
                     android:layout_weight="1"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Check Data Guru"
+                    android:text="Absen Yang Sudah Terverivikasi"
                     android:textSize="20dp"
                     android:layout_gravity="start"
                     android:gravity="top|center"
@@ -70,6 +122,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
 
     </LinearLayout>
 

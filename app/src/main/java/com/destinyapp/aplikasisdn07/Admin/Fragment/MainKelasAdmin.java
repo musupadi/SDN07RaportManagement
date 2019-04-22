@@ -19,7 +19,7 @@ import com.destinyapp.aplikasisdn07.R;
  */
 public class MainKelasAdmin extends Fragment {
 
-    LinearLayout Input,Check;
+
 
     public MainKelasAdmin() {
         // Required empty public constructor
@@ -36,23 +36,6 @@ public class MainKelasAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Input = (LinearLayout)view.findViewById(R.id.inputData);
-        Check = (LinearLayout)view.findViewById(R.id.checkData);
-        Input.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
-                goInput.putExtra("INPUT_KELAS","input_kelas");
-                getActivity().startActivities(new Intent[]{goInput});
-            }
-        });
-        Check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
-                goInput.putExtra("OUTPUT_KELAS","output_kelas");
-                getActivity().startActivities(new Intent[]{goInput});
-            }
-        });
+
     }
 }

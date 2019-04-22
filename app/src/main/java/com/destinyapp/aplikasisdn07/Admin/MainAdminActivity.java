@@ -25,14 +25,21 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.CheckAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataGuruAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataSiswaAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.InputAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataGuruAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataJadwalAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataKelasAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataMataPelajaranAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataSiswaAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.MainGuruAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.MainJadwalAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.MainKelasAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.MainMapelAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.MainNilaiAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.MainSiswaAdmin;
 import com.destinyapp.aplikasisdn07.Fragment.AboutFragment;
 import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
@@ -105,6 +112,10 @@ public class MainAdminActivity extends AppCompatActivity
         String outputSiswa = data.getStringExtra("OUTPUT_SISWA");
         String inputKelas = data.getStringExtra("INPUT_KELAS");
         String outputKelas = data.getStringExtra("OUTPUT_KELAS");
+        String inputJadwal = data.getStringExtra("INPUT_JADWAL");
+        String outputJadwal = data.getStringExtra("OUTPUT_JADWAL");
+        String inputMapel = data.getStringExtra("INPUT_MAPEL");
+        String outputMapel = data.getStringExtra("OUTPUT_MAPEL");
         if (inputGuru != null){
             fragment=new InputDataGuruAdmin();
         }else if(outputGuru != null){
@@ -164,18 +175,10 @@ public class MainAdminActivity extends AppCompatActivity
         Fragment fragment = null;
         int id = item.getItemId();
 
-        if (id == R.id.nav_guru_admin) {
-            fragment=new MainGuruAdmin();
-        } else if (id == R.id.nav_siswa_admin) {
-            fragment=new InputDataSiswaAdmin();
-        } else if (id == R.id.nav_mataPelajaran_admin) {
-            fragment=new DataMataPelajaranAdmin();
-        } else if (id == R.id.nav_kelas_admin) {
-            fragment=new InputDataKelasAdmin();
-        } else if (id == R.id.nav_jadwal_admin) {
-            fragment=new DataJadwalAdmin();
-        } else if (id == R.id.nav_penilaianAdmin) {
-
+        if (id == R.id.nav_input) {
+            fragment=new InputAdminDashboard();
+        } else if (id == R.id.nav_check) {
+            fragment=new CheckAdminDashboard();
         } else if (id == R.id.nav_data_diri_admin) {
 
         }else if (id == R.id.nav_logout_admin) {

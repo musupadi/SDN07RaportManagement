@@ -14,10 +14,10 @@ import com.destinyapp.aplikasisdn07.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DataKelasAdmin extends Fragment {
+public class MainNilaiAdmin extends Fragment {
 
 
-    public DataKelasAdmin() {
+    public MainNilaiAdmin() {
         // Required empty public constructor
     }
 
@@ -26,12 +26,11 @@ public class DataKelasAdmin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data_kelas_admin, container, false);
+        return inflater.inflate(R.layout.fragment_main_nilai_admin, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 }

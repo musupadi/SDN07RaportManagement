@@ -53,8 +53,8 @@ public class InputDataKelasAdmin extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tingkatkelas = (Spinner)view.findViewById(R.id.SpinnerTingkatKelas);
-        namaKelas = (EditText)view.findViewById(R.id.etNamaKelasAdmin);
-        insert = (Button)view.findViewById(R.id.btnInputDataKelasAdmin);
+        namaKelas = (EditText)view.findViewById(R.id.etNamaKelas);
+        insert = (Button)view.findViewById(R.id.btnInput);
 
         List<String> TK = new ArrayList<>();
         TK.add(0,"Pilih Tingkat Kelas");

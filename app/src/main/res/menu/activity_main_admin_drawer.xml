@@ -5,29 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_guru_admin"
+            android:id="@+id/nav_input"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Data Guru" />
+            android:title="Input Data" />
         <item
-            android:id="@+id/nav_siswa_admin"
+            android:id="@+id/nav_check"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Data Siswa" />
-        <item
-            android:id="@+id/nav_mataPelajaran_admin"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Data Mata Pelajaran" />
-        <item
-            android:id="@+id/nav_kelas_admin"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Data Kelas" />
-        <item
-            android:id="@+id/nav_jadwal_admin"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Data Jadwal" />
-        <item
-            android:id="@+id/nav_penilaianAdmin"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Data Nilai" />
+            android:title="Check Data" />
     </group>
 
     <item android:title="Account">

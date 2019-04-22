@@ -2,8 +2,6 @@ package com.destinyapp.aplikasisdn07.Admin.Fragment;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +12,10 @@ import com.destinyapp.aplikasisdn07.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DataKelasAdmin extends Fragment {
+public class CheckAdminDashboard extends Fragment {
 
 
-    public DataKelasAdmin() {
+    public CheckAdminDashboard() {
         // Required empty public constructor
     }
 
@@ -26,12 +24,7 @@ public class DataKelasAdmin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data_kelas_admin, container, false);
+        return inflater.inflate(R.layout.fragment_check_admin_dashboard, container, false);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
 }
