@@ -18,7 +18,7 @@
         android:orientation="horizontal">
         <ImageView
             android:layout_width="150dp"
-            android:layout_height="190dp"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:id="@+id/ivPhotoGuruAdmin"
             android:layout_marginBottom="4dp"

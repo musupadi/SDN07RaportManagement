@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Admin.Fragment.InputDataSiswaAdmin">
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Admin.Fragment.InputDataGuruAdmin"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Masukan Input Data Siswa"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20dp"/>
+        android:orientation="vertical"
+        android:padding="30dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masukan Input Data Siswa"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/PureBlack"
+        android:layout_marginBottom="10dp"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,59 +25,118 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/etNISSiswaAdmin"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Nomor Induk Siswa"/>
-                <EditText
-                    android:id="@+id/etNamaSiswaAdmin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etNIS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Nomor Induk Siswa"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Nama Lengkap"/>
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etNamaSiswa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Nama Lengkap"/>
+                </android.support.design.widget.TextInputLayout>
                 <Spinner
                     android:id="@+id/SpinnerKelamin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:entries="@array/jk"
+                    android:textAlignment="center"
+                    >
                 </Spinner>
-                <EditText
-                    android:id="@+id/etTahunAjaran"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Tahun Ajaran"/>
-                <EditText
-                    android:id="@+id/etAyahSiswaAdmin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etTahunAjaran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Tahun Ajaran"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Ayah Siswa"/>
-                <EditText
-                    android:id="@+id/etIbuSiswaAdmin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etAyahSiswa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Ayah Siswa"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Nama Ibu Siswa"/>
-                <EditText
-                    android:id="@+id/etPekerjaanAyahSiswaAdmin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etIbuSiswa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Nama Ibu Siswa"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Pekerjaan Ayah"/>
-                <EditText
-                    android:id="@+id/etPekerjaanIbuSiswaAdmin"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etPekerjaanAyah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Pekerjaan Ayah"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Pekerjaan Ibu"/>
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <EditText
+                        android:id="@+id/etPekerjaanIbu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Pekerjaan Ibu"/>
+                </android.support.design.widget.TextInputLayout>
                 <Spinner
-                    android:id="@+id/SpinnerKelasSiswaAdmin"
+                    android:id="@+id/SpinnerKelas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </Spinner>
                 <Button
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:id="@+id/btnInputDataSiswaAdmin"
-                    android:text="Input Data Guru"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnInput"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Base.Widget.AppCompat.Button.Colored"/>
+                    android:text="Input Data Kelas"
+                    android:textSize="22sp"
+                    android:background="@drawable/button_rounded"/>
             </LinearLayout>
         </ScrollView>
 
@@ -87,5 +144,3 @@
 
 
     </LinearLayout>
-
-</FrameLayout>

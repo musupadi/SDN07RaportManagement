@@ -1,5 +1,9 @@
 package com.destinyapp.aplikasisdn07.API;
 
+import android.content.Context;
+
+import com.destinyapp.aplikasisdn07.R;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

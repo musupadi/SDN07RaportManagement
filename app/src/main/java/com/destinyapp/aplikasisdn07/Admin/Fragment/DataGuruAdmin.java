@@ -50,7 +50,7 @@ public class DataGuruAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        DataGuru = (RecyclerView)view.findViewById(R.id.recyclerDataGuruAdmin);
+        DataGuru = (RecyclerView)view.findViewById(R.id.recycler);
 
         mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         DataGuru.setLayoutManager(mManager);

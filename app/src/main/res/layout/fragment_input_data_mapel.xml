@@ -18,25 +18,25 @@
         android:textColorHint="@color/colorAccent">
 
         <EditText
-            android:id="@+id/etNamaKelas"
+            android:id="@+id/etNamaMapel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Masukan Nama Kelas"
+            android:hint="Masukan Nama Mata Pelajaran"
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <Spinner
-        android:textAlignment="center"
         android:id="@+id/spinnerTingkatKelas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:entries="@array/tingkat">
+        android:entries="@array/tingkat"
+        android:textAlignment="center">
 
     </Spinner>
-    
+
     <Button
         android:id="@+id/btnInput"
         android:layout_marginTop="40dp"

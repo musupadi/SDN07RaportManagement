@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Admin.Fragment.InputDataGuruAdmin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="30dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +14,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="20dp"
-        android:textColor="@color/PureBlack"/>
+        android:textStyle="bold"
+        android:textColor="@color/PureBlack"
+        android:layout_marginBottom="10dp"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,93 +26,175 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/etNIPGuruAdmin"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan NIP Guru"/>
-            <EditText
-                android:id="@+id/etPasswordGuruAdmin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etNIP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan NIP Guru"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Password Guru"
-                android:inputType="textPassword"/>
-            <EditText
-                android:id="@+id/etNamaGuruAdmin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Masukan Password"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Nama Lengkap dan Gelar"/>
-            <EditText
-                android:id="@+id/etTempatLahirGuruAdmin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etNamaGuru"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan Nama Lengkap dan Gelar"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tempat Lahir"/>
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etTempatLahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tempat Lahir"/>
+            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Lahir"
+                android:textSize="16sp"
+                android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:inputType="number"
-                    android:id="@+id/etTglLahirGuruAdmin"
-                    android:hint="Tanggal Lahir"
+                <Spinner
+                    android:id="@+id/spinnerTglLahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:inputType="number"
-                    android:id="@+id/etBulanLahirGuruAdmin"
-                    android:hint="Bulan Lahir"
+                    android:layout_weight="1"
+                    android:entries="@array/tgl" />
+
+                <Spinner
+                    android:id="@+id/spinnerBulanLahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:inputType="number"
-                    android:id="@+id/etTahunLahirGuruAdmin"
-                    android:hint="Tahun Lahir"
+                    android:layout_weight="1"
+                    android:entries="@array/bulan" />
+
+                <Spinner
+                    android:id="@+id/spinnerTahunLahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:entries="@array/tahun" />
             </LinearLayout>
-            <EditText
-                android:id="@+id/etAgamaGuruAdmin"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Agama Guru"/>
-            <EditText
-                android:inputType="number"
-                android:id="@+id/etTeleponGuruAdmin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etAgama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan Agama Guru"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Nomor Telepon Guru"/>
-            <EditText
-                android:id="@+id/etJabatanGuruAdmin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:inputType="number"
+                    android:id="@+id/etTelepon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan Nomor Telepon Guru"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Jabatan Guru"/>
-            <EditText
-                android:id="@+id/etPendidikanGuruAdmin"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etJabatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan Jabatan Guru"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Pendidikan Terakhir Guru"/>
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etPendidikan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan Pendidikan Terakhir Guru"/>
+            </android.support.design.widget.TextInputLayout>
+
             <Spinner
                 android:id="@+id/SpinnerKelamin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:entries="@array/jk"
+                android:textAlignment="center">
             </Spinner>
-            <EditText
-                android:id="@+id/etAlamatGuruAdmin"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Masukan Alamat Guru"/>
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/etAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukan Alamat Guru"/>
+            </android.support.design.widget.TextInputLayout>
+
             <Button
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:id="@+id/btnInputDataGuruAdmin"
-                android:text="Input Data Guru"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnInput"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.Button.Colored"/>
+                android:text="Input Data Guru"
+                android:textSize="22sp"
+                android:background="@drawable/button_rounded"/>
         </LinearLayout>
     </ScrollView>
 

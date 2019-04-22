@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:text="Nama Mata Pelajaran"
+                android:text="Nama Kelas"
                 android:textSize="14dp"
                 android:textStyle="bold" />
             <TextView
@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvNamaMapel"
+                android:id="@+id/tvNamaKelas"
                 android:text="Matematika"
                 android:textSize="14dp"
                 android:textStyle="bold"
@@ -55,7 +55,7 @@
             <TextView
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:text="Tingkat Pelajaran"
+                android:text="Tingkat Kelas"
                 android:textSize="14dp"
                 android:textStyle="bold" />
             <TextView
@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvTingkatPelajaran"
+                android:id="@+id/tvTingkatKelas"
                 android:text="1"
                 android:textSize="14dp"
                 android:textStyle="bold"

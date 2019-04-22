@@ -51,6 +51,8 @@ public interface  ApiRequest {
                                       @Field("tanggal_masuk") String tanggal_masuk,
                                       @Field("id_kelas") String id_kelas);
 
+
+
     @FormUrlEncoded
     @POST("CheckStatusSiswa.php")
     Call<ResponseModel> CheckStatusSiswa(@Field("nis") String nis,
@@ -70,8 +72,17 @@ public interface  ApiRequest {
     @GET("getAllClass.php")
     Call<ResponseModel> getKelas();
 
+    @GET("getAllMapel.php")
+    Call<ResponseModel> getAllMapel();
+
     @GET("getAllDataGuru.php")
     Call<ResponseModel> getAllDataGuru();
+
+    @GET("getAllSiswa.php")
+    Call<ResponseModel> getAllDataSiswa();
+
+    @GET("getAllJadwal.php")
+    Call<ResponseModel> getAllDataJadwal();
 
     @FormUrlEncoded
     @POST("getAllSiswaFromClassGuru.php")
@@ -188,7 +199,7 @@ public interface  ApiRequest {
                                         @Field("tingkat_kelas") String tingkat_kelas);
 
     @FormUrlEncoded
-    @POST("InsertDataMapel.php")
+    @POST("InsertDataMatapelajaran.php")
     Call<ResponseModel> insertDataMapel(@Field("nama_mapel") String nama_mapel,
                                         @Field("tingkat_kelas") String tingkat_kelas);
 
@@ -196,4 +207,9 @@ public interface  ApiRequest {
     @POST("getGuruFromNama.php")
     Call<ResponseModel> getGuru(@Field("nama") String nama,
                                         @Field("nip") String nip);
+
+    @FormUrlEncoded
+    @POST("getGuru.php")
+    Call<ResponseModel> getGuruComplete(@Field("nama") String nama,
+                                @Field("nip") String nip);
 }

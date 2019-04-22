@@ -1,0 +1,250 @@
+package com.destinyapp.aplikasisdn07.Admin.Fragment;
+
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.destinyapp.aplikasisdn07.API.ApiRequest;
+import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.GlobalAdapter.AdapterAutoCompleteNIP;
+import com.destinyapp.aplikasisdn07.GlobalAdapter.AdapterAutoCompleteNamaGuru;
+import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterKelasSpinner;
+import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterNamaMapel;
+import com.destinyapp.aplikasisdn07.Models.DataModel;
+import com.destinyapp.aplikasisdn07.Models.ResponseModel;
+import com.destinyapp.aplikasisdn07.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class InputDataJadwal extends Fragment {
+
+    AutoCompleteTextView mapel,nama,nip;
+    Spinner hari,kelas,dariJam,sampaiJam;
+    Button Insert;
+    private List<DataModel> mItems = new ArrayList<>();
+    private AdapterKelasSpinner aSpinner;
+    String idKelas;
+
+    public InputDataJadwal() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_input_data_jadwal, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        nip = (AutoCompleteTextView) view.findViewById(R.id.etNIP);
+        nama = (AutoCompleteTextView)view.findViewById(R.id.etNamaGuru);
+        mapel = (AutoCompleteTextView)view.findViewById(R.id.etNamaMapel);
+        hari = (Spinner)view.findViewById(R.id.spinnerHari);
+        kelas = (Spinner)view.findViewById(R.id.spinnerKelas);
+        Insert = (Button)view.findViewById(R.id.btnInput);
+        dariJam = (Spinner)view.findViewById(R.id.spinnerDariJam);
+        sampaiJam = (Spinner)view.findViewById(R.id.spinnerSampaiJam);
+        getKelas();
+        getMapel();
+        getAutoNIP();
+        getAutoNamaGuru();
+        aSpinner = new AdapterKelasSpinner(getActivity(),mItems);
+        kelas.setAdapter(aSpinner);
+        kelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
+                String clickedItemNamaKelas = clickedItem.getNama_kelas();
+                GetIDKelas(clickedItemNamaKelas);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        nip.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    getAuto();
+                }
+            }
+        });
+        nama.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    getAuto();
+                }
+            }
+        });
+        Insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Mapel = mapel.getEditableText().toString();
+                getIDMapel(Mapel);
+            }
+        });
+    }
+    private void getAuto(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        final Call<ResponseModel> getData= api.getGuruComplete(nama.getEditableText().toString(),nip.getEditableText().toString());
+        getData.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                nama.setText(response.body().getNama());
+                nip.setText(response.body().getNip());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void InputData(String idMapel){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> insertDataJadwal = api.insertDataJadwal(nip.getText().toString(), idKelas,idMapel,
+                hari.getSelectedItem().toString(), dariJam.getSelectedItem().toString(),
+                sampaiJam.getSelectedItem().toString()
+                );
+        insertDataJadwal.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.body().getResponse().equals("Insert")){
+                    Toast.makeText(getActivity(),"Data Berhasil Terinput",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(),"Data Jadwal Sudah Teriisi",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal silahkan coba lagi nanti",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getIDMapel(final String ID){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getIDMapel = api.getIDMapel(ID);
+        getIDMapel.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                String idMapel= response.body().getId_mapel();
+                InputData(idMapel);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal silahkan coba lagi nanti",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getAutoNamaGuru(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getMapel = api.getAllDataGuru();
+        getMapel.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getResult();
+                AdapterAutoCompleteNamaGuru adapter = new AdapterAutoCompleteNamaGuru(getActivity(),mItems);
+                nama.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam getMapel Method",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getAutoNIP(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getMapel = api.getAllDataGuru();
+        getMapel.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getResult();
+                AdapterAutoCompleteNIP adapter = new AdapterAutoCompleteNIP(getActivity(),mItems);
+                nip.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam getMapel Method",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getMapel(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getMapel = api.getAllMapel();
+        getMapel.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getResult();
+                AdapterNamaMapel adapter = new AdapterNamaMapel(getActivity(),mItems);
+                mapel.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam getMapel Method",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void GetIDKelas(String NamaKelas){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getIDKelas = api.GetIDKelas(NamaKelas);
+        getIDKelas.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                idKelas = response.body().getId_kelas();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam GetIDKelas",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getKelas(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> GetKelas = api.getKelas();
+        GetKelas.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getResult();
+                AdapterKelasSpinner adapter = new AdapterKelasSpinner(getActivity(),mItems);
+                kelas.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Kelas Tidak Ditemukan",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}

@@ -27,19 +27,16 @@ import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.CheckAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataGuruAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.DataJadwalAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.DataKelasAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.DataMataPelajaranAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataSiswaAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataGuruAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.DataJadwalAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataJadwal;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataKelasAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.DataMataPelajaranAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataMapel;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataSiswaAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.MainGuruAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.MainJadwalAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.MainKelasAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.MainMapelAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.MainNilaiAdmin;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.MainSiswaAdmin;
 import com.destinyapp.aplikasisdn07.Fragment.AboutFragment;
 import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
@@ -101,7 +98,7 @@ public class MainAdminActivity extends AppCompatActivity
         navUsername.setText("Username : "+User);
 
         Fragment fragment = null;
-        fragment = new MainGuruAdmin();
+        fragment = new InputAdminDashboard();
 
 
         //IF ELSE
@@ -127,7 +124,15 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(inputKelas !=null){
             fragment=new InputDataKelasAdmin();
         }else if(outputKelas !=null){
-
+            fragment=new DataKelasAdmin();
+        }else if(inputJadwal !=null){
+            fragment=new InputDataJadwal();
+        }else if(outputJadwal !=null){
+            fragment=new DataJadwalAdmin();
+        }else if(inputMapel !=null){
+            fragment=new InputDataMapel();
+        }else if(outputMapel !=null){
+            fragment=new DataMataPelajaranAdmin();
         }
 
         //DONE

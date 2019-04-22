@@ -1,17 +1,14 @@
-package com.destinyapp.aplikasisdn07.Guru.Adapter;
+package com.destinyapp.aplikasisdn07.GlobalAdapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.Models.DataModel;
 import com.destinyapp.aplikasisdn07.R;
@@ -19,10 +16,10 @@ import com.destinyapp.aplikasisdn07.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterNamaMapel extends ArrayAdapter<DataModel> {
+public class AdapterAutoCompleteNamaGuru extends ArrayAdapter<DataModel> {
     private List<DataModel> dmListFull;
 
-    public AdapterNamaMapel(@NonNull Context context, @NonNull List<DataModel> countryList) {
+    public AdapterAutoCompleteNamaGuru(@NonNull Context context, @NonNull List<DataModel> countryList) {
         super(context, 0, countryList);
         dmListFull = new ArrayList<>(countryList);
     }
@@ -38,18 +35,18 @@ public class AdapterNamaMapel extends ArrayAdapter<DataModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_pelajaran_row, parent, false
+                    R.layout.list_guru_row, parent, false
             );
         }
 
-        TextView textViewName = convertView.findViewById(R.id.tvNamaMapel);
-        TextView textViewTingkat = convertView.findViewById(R.id.tvTingkatPelajaran);
+        TextView textViewName = convertView.findViewById(R.id.tvNamaGuru);
+        TextView textViewNIP = convertView.findViewById(R.id.tvNIPGuru);
 
         DataModel dm = getItem(position);
 
         if (dm != null) {
-            textViewName.setText(dm.getNama_mapel());
-            textViewTingkat.setText("untuk Kelas : "+dm.getTingkat_kelas());
+            textViewName.setText(dm.getNama());
+            textViewNIP.setText(dm.getNip());
         }
 
         return convertView;
@@ -67,7 +64,7 @@ public class AdapterNamaMapel extends ArrayAdapter<DataModel> {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (DataModel item : dmListFull) {
-                    if (item.getNama_mapel().toLowerCase().contains(filterPattern)) {
+                    if (item.getNama().toLowerCase().contains(filterPattern)) {
                         suggestions.add(item);
                     }
                 }
@@ -88,7 +85,8 @@ public class AdapterNamaMapel extends ArrayAdapter<DataModel> {
 
         @Override
         public CharSequence convertResultToString(Object resultValue) {
-            return ((DataModel) resultValue).getNama_mapel();
+            return ((DataModel) resultValue).getNama();
         }
     };
 }
+

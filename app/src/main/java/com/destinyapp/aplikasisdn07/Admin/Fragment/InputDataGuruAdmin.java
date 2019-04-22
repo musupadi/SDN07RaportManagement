@@ -38,8 +38,8 @@ import retrofit2.Response;
  */
 public class InputDataGuruAdmin extends Fragment {
 
-    EditText nip,password,nama,TempatLahir,tgl,bulan,tahun,agama,notelp,jabatan,pendidikan,alamat;
-    Spinner jk;
+    EditText nip,password,nama,TempatLahir,agama,notelp,jabatan,pendidikan,alamat;
+    Spinner jk,tgl,bulan,tahun;
     Button insert;
     String jenisKelamin;
     String defaultPPGuru = "logo.png";
@@ -63,20 +63,20 @@ public class InputDataGuruAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        nip = (EditText)view.findViewById(R.id.etNIPGuruAdmin);
-        password = (EditText)view.findViewById(R.id.etPasswordGuruAdmin);
-        nama = (EditText)view.findViewById(R.id.etNamaGuruAdmin);
-        TempatLahir = (EditText)view.findViewById(R.id.etTempatLahirGuruAdmin);
-        tgl = (EditText)view.findViewById(R.id.etTglLahirGuruAdmin);
-        bulan = (EditText)view.findViewById(R.id.etBulanLahirGuruAdmin);
-        tahun = (EditText)view.findViewById(R.id.etTahunLahirGuruAdmin);
-        agama = (EditText)view.findViewById(R.id.etAgamaGuruAdmin);
-        notelp = (EditText)view.findViewById(R.id.etTeleponGuruAdmin);
-        jabatan = (EditText)view.findViewById(R.id.etJabatanGuruAdmin);
-        pendidikan = (EditText)view.findViewById(R.id.etPendidikanGuruAdmin);
+        nip = (EditText)view.findViewById(R.id.etNIP);
+        password = (EditText)view.findViewById(R.id.etPassword);
+        nama = (EditText)view.findViewById(R.id.etNamaGuru);
+        TempatLahir = (EditText)view.findViewById(R.id.etTempatLahir);
+        tgl = (Spinner)view.findViewById(R.id.spinnerTglLahir);
+        bulan = (Spinner)view.findViewById(R.id.spinnerBulanLahir);
+        tahun = (Spinner) view.findViewById(R.id.spinnerTahunLahir);
+        agama = (EditText)view.findViewById(R.id.etAgama);
+        notelp = (EditText)view.findViewById(R.id.etTelepon);
+        jabatan = (EditText)view.findViewById(R.id.etJabatan);
+        pendidikan = (EditText)view.findViewById(R.id.etPendidikan);
         jk = (Spinner) view.findViewById(R.id.SpinnerKelamin);
-        alamat = (EditText)view.findViewById(R.id.etAlamatGuruAdmin);
-        insert = (Button)view.findViewById(R.id.btnInputDataGuruAdmin);
+        alamat = (EditText)view.findViewById(R.id.etAlamat);
+        insert = (Button)view.findViewById(R.id.btnInput);
 
         //getAllGuru();
 
@@ -111,7 +111,7 @@ public class InputDataGuruAdmin extends Fragment {
         });
     }
     private String getTanggal(){
-        String tanggal = tahun.getText().toString()+"-"+bulan.getText().toString()+"-"+tgl.getText().toString();
+        String tanggal = tahun.getSelectedItem().toString()+"-"+bulan.getSelectedItem().toString()+"-"+tgl.getSelectedItem().toString();
         return tanggal;
     }
     private void insertGuru(){

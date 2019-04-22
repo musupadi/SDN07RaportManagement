@@ -52,37 +52,9 @@ public class InputDataKelasAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tingkatkelas = (Spinner)view.findViewById(R.id.SpinnerTingkatKelas);
+        tingkatkelas = (Spinner)view.findViewById(R.id.spinnerTingkatKelas);
         namaKelas = (EditText)view.findViewById(R.id.etNamaKelas);
         insert = (Button)view.findViewById(R.id.btnInput);
-
-        List<String> TK = new ArrayList<>();
-        TK.add(0,"Pilih Tingkat Kelas");
-        TK.add("1");
-        TK.add("2");
-        TK.add("3");
-        TK.add("4");
-        TK.add("5");
-        TK.add("6");
-        ArrayAdapter dataAdapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,TK);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        tingkatkelas.setAdapter(dataAdapter);
-        tingkatkelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Pilih Tingkat Kelas")){
-                    tingkatKelas = "Pilih Tingkat Kelas";
-                }else{
-                    tingkatKelas = parent.getItemAtPosition(position).toString();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +65,7 @@ public class InputDataKelasAdmin extends Fragment {
     private void insertDataKelas(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
         Call<ResponseModel> getInsertKelas = api.insertDataKelas(namaKelas.getText().toString(),
-                tingkatKelas);
+                tingkatkelas.getSelectedItem().toString());
         getInsertKelas.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

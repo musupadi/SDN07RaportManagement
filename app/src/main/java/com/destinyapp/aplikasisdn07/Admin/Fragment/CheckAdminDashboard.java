@@ -1,19 +1,24 @@
 package com.destinyapp.aplikasisdn07.Admin.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.destinyapp.aplikasisdn07.Admin.MainAdminActivity;
 import com.destinyapp.aplikasisdn07.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CheckAdminDashboard extends Fragment {
-
+    Button guru,mapel,kelas,jadwal,siswa;
 
     public CheckAdminDashboard() {
         // Required empty public constructor
@@ -27,4 +32,55 @@ public class CheckAdminDashboard extends Fragment {
         return inflater.inflate(R.layout.fragment_check_admin_dashboard, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        guru = (Button)view.findViewById(R.id.btnGuru);
+        siswa = (Button)view.findViewById(R.id.btnSiswa);
+        mapel = (Button)view.findViewById(R.id.btnMapel);
+        kelas = (Button)view.findViewById(R.id.btnKelas);
+        jadwal = (Button)view.findViewById(R.id.btnJadwal);
+
+        //ClickListener
+        guru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("OUTPUT_GURU","output_guru");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
+        siswa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("OUTPUT_SISWA","output_siswa");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
+        mapel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("OUTPUT_MAPEL","output_mapel");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
+        kelas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("OUTPUT_KELAS","output_kelas");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
+        jadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("OUTPUT_JADWAL","output_jadwal");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
+    }
 }

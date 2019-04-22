@@ -1,75 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.Fragment.InputDataKelasAdmin">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context=".Admin.Fragment.DataGuruAdmin"
+    android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Admin.Fragment.DataMataPelajaranAdmin"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Masukan Input Data Siswa"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20dp"/>
+        android:layout_weight="2"
+        android:padding="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        card_view:cardCornerRadius="4dp">
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="30dp">
 
-                <EditText
-                    android:id="@+id/etNamaMapelAdmin"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Masukan Nama Mata Pelajaran"/>
-                <Spinner
-                    android:id="@+id/SpinnerTingkatKelas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </Spinner>
-                <Button
-                    android:gravity="center"
+                    android:text="Mencari Data Mata Pelajaran"
                     android:layout_gravity="center"
-                    android:id="@+id/btnInputDataMapelAdmin"
-                    android:text="Input Data Kelas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/PureBlack"
+                    android:layout_marginBottom="10dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etNamaMapel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="Masukan Nama Mata Pelajaran"/>
+                </android.support.design.widget.TextInputLayout>
+                <Spinner
+                    android:id="@+id/spinnerTingkatKelas"
+                    android:entries="@array/tingkat"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></Spinner>
+                <Button
+                    android:id="@+id/btnInput"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cari Data"
+                    android:textSize="20sp"
+                    android:background="@drawable/button_rounded"/>
             </LinearLayout>
         </ScrollView>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Data Kelas"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="20dp"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerDataSiswaAdmin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
 
 
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="1"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

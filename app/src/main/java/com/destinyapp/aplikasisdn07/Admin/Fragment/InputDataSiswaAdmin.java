@@ -40,7 +40,7 @@ public class InputDataSiswaAdmin extends Fragment {
     EditText nis,nama,tahunajaran,namaibu,namaayah,pekerjanaayah,pekerjaanibu;
     Button insert;
     String idKelas,jenisKelamin;
-    String defaultPPSiswa = "zeref.jpg";
+    String defaultPPSiswa = "logo.jpg";
     private List<DataModel> mItems = new ArrayList<>();
     private AdapterKelasSpinner aSpinner;
     public InputDataSiswaAdmin() {
@@ -58,16 +58,16 @@ public class InputDataSiswaAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        kelas = (Spinner)view.findViewById(R.id.SpinnerKelasSiswaAdmin);
+        kelas = (Spinner)view.findViewById(R.id.SpinnerKelas);
         jk = (Spinner)view.findViewById(R.id.SpinnerKelamin);
-        nis = (EditText)view.findViewById(R.id.etNISSiswaAdmin);
-        nama = (EditText)view.findViewById(R.id.etNamaSiswaAdmin);
+        nis = (EditText)view.findViewById(R.id.etNIS);
+        nama = (EditText)view.findViewById(R.id.etNamaSiswa);
         tahunajaran = (EditText)view.findViewById(R.id.etTahunAjaran);
-        namaibu = (EditText)view.findViewById(R.id.etIbuSiswaAdmin);
-        namaayah = (EditText)view.findViewById(R.id.etAyahSiswaAdmin);
-        pekerjaanibu = (EditText)view.findViewById(R.id.etPekerjaanIbuSiswaAdmin);
-        pekerjanaayah = (EditText)view.findViewById(R.id.etPekerjaanAyahSiswaAdmin);
-        insert = (Button)view.findViewById(R.id.btnInputDataSiswaAdmin);
+        namaibu = (EditText)view.findViewById(R.id.etIbuSiswa);
+        namaayah = (EditText)view.findViewById(R.id.etAyahSiswa);
+        pekerjaanibu = (EditText)view.findViewById(R.id.etPekerjaanIbu);
+        pekerjanaayah = (EditText)view.findViewById(R.id.etPekerjaanAyah);
+        insert = (Button)view.findViewById(R.id.btnInput);
 
         List<String> JK = new ArrayList<>();
         JK.add(0,"Pilih Jenis Kelamin");

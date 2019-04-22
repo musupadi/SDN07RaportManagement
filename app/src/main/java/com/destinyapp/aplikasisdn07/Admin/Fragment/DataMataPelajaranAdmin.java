@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Admin.Adapter.AdapterDataMataPelajaran;
+import com.destinyapp.aplikasisdn07.Models.DataModel;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
 
@@ -32,10 +34,13 @@ import retrofit2.Response;
  */
 public class DataMataPelajaranAdmin extends Fragment {
 
+    RecyclerView recycler;
     EditText NamaMapel;
     Spinner tingkatkelas;
-    Button insert;
-    String tingkatKelas;
+    private RecyclerView.Adapter mAdapter;
+    private List<DataModel> mItems = new ArrayList<>();
+    private RecyclerView.LayoutManager mManager;
+    Button cari;
     public DataMataPelajaranAdmin() {
         // Required empty public constructor
     }
@@ -51,60 +56,36 @@ public class DataMataPelajaranAdmin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        NamaMapel = (EditText)view.findViewById(R.id.etNamaMapelAdmin);
-        tingkatkelas = (Spinner)view.findViewById(R.id.SpinnerTingkatKelas);
-        insert = (Button)view.findViewById(R.id.btnInputDataMapelAdmin);
-        List<String> TK = new ArrayList<>();
-        TK.add(0,"Pilih Tingkat Kelas");
-        TK.add("1");
-        TK.add("2");
-        TK.add("3");
-        TK.add("4");
-        TK.add("5");
-        TK.add("6");
-        ArrayAdapter dataAdapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,TK);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        tingkatkelas.setAdapter(dataAdapter);
-        tingkatkelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Pilih Tingkat Kelas")){
-                    tingkatKelas = "Pilih Tingkat Kelas";
-                }else{
-                    tingkatKelas = parent.getItemAtPosition(position).toString();
-                }
-            }
+        NamaMapel = (EditText)view.findViewById(R.id.etNamaMapel);
+        tingkatkelas = (Spinner)view.findViewById(R.id.spinnerTingkatKelas);
+        cari = (Button)view.findViewById(R.id.btnInput);
+        recycler = (RecyclerView)view.findViewById(R.id.recycler);
+        mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        recycler.setLayoutManager(mManager);
+        getAllMapel();
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        insert.setOnClickListener(new View.OnClickListener() {
+        cari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
     }
-    private void insertData(){
+    private void getAllMapel(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getInsertKelas = api.insertDataKelas(NamaMapel.getText().toString(),
-                tingkatKelas);
-        getInsertKelas.enqueue(new Callback<ResponseModel>() {
+        Call<ResponseModel> GetAllDataGuru = api.getAllMapel();
+        GetAllDataGuru.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                String Response = response.body().getResponse();
-                if(Response.equals("Insert")){
-                    Toast.makeText(getActivity(),"Data Berhasil Disimpan",Toast.LENGTH_SHORT).show();
-                }else if(Response.equals("Update")){
-                    Toast.makeText(getActivity(),"Data Data Kelas sudah teriisi",Toast.LENGTH_SHORT).show();
-                }
+                mItems=response.body().getResult();
+                mAdapter = new AdapterDataMataPelajaran(getActivity(),mItems);
+                recycler.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(),"Data Error pada method insertDataKelas",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Data Error pada Method getAllGuru",Toast.LENGTH_SHORT).show();
             }
         });
     }

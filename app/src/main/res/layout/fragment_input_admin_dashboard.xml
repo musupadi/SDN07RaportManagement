@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".Admin.Fragment.MainKelasAdmin"
     android:orientation="vertical">
 
     <ScrollView
@@ -42,7 +41,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SDN 07"
+                        android:text="Input Data SDN 07"
                         android:textColor="@color/colorWhite"
                         android:layout_gravity="center"
                         android:textStyle="bold"
@@ -64,10 +63,15 @@
                         android:layout_marginBottom="10dp">
 
                         <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="4dp"
+                            card_view:cardCornerRadius="4dp">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -76,21 +80,28 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:src="@drawable/responsive"
-                                        android:id="@+id/imgGuru"
-                                        android:layout_centerInParent="true"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Input Data Guru"
-                                        android:textSize="16sp"
-                                        android:layout_below="@+id/imgGuru"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        >
+                                        <ImageView
+                                            android:paddingTop="10dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/teamwork"
+                                            android:id="@+id/imgGuru"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            />
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Input Data Guru"
+                                            android:textSize="16sp"
+                                            android:gravity="center|top"
+                                            android:layout_weight="1"/>
+                                    </LinearLayout>
                                     <Button
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -102,10 +113,15 @@
 
                         </android.support.v7.widget.CardView>
                         <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="4dp"
+                            card_view:cardCornerRadius="4dp">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -114,21 +130,28 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:src="@drawable/boy"
-                                        android:id="@+id/imgSiswa"
-                                        android:layout_centerInParent="true"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Input Data Siswa"
-                                        android:textSize="16sp"
-                                        android:layout_below="@+id/imgSiswa"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        >
+                                        <ImageView
+                                            android:paddingTop="10dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/boy"
+                                            android:id="@+id/imgSiswa"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            />
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Input Data Siswa"
+                                            android:textSize="16sp"
+                                            android:gravity="center|top"
+                                            android:layout_weight="1"/>
+                                    </LinearLayout>
                                     <Button
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -147,10 +170,15 @@
                         android:layout_marginBottom="10dp">
 
                         <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="4dp"
+                            card_view:cardCornerRadius="4dp">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -159,21 +187,28 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:src="@drawable/idea"
-                                        android:id="@+id/imgMapel"
-                                        android:layout_centerInParent="true"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Input Data Mata Pelajaran"
-                                        android:textSize="16sp"
-                                        android:layout_below="@+id/imgMapel"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        >
+                                        <ImageView
+                                            android:paddingTop="10dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/idea"
+                                            android:id="@+id/imgMapel"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            />
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Input Data Mata Pelajaran"
+                                            android:textSize="16sp"
+                                            android:gravity="center|top"
+                                            android:layout_weight="1"/>
+                                    </LinearLayout>
                                     <Button
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -185,10 +220,15 @@
 
                         </android.support.v7.widget.CardView>
                         <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="10dp">
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="4dp"
+                            card_view:cardCornerRadius="4dp"
+                            >
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -197,30 +237,35 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:src="@drawable/classroom"
-                                        android:id="@+id/imgKelas"
-                                        android:layout_centerInParent="true"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Input Data Kelas"
-                                        android:textSize="16sp"
-                                        android:layout_below="@+id/imgKelas"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        >
+                                        <ImageView
+                                            android:paddingTop="10dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/classroom"
+                                            android:id="@+id/imgKelas"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            />
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Input Data Kelas"
+                                            android:textSize="16sp"
+                                            android:gravity="center|top"
+                                            android:layout_weight="1"/>
+                                    </LinearLayout>
                                     <Button
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:id="@+id/btnKelas"
                                         android:background="@android:color/transparent"/>
                                 </RelativeLayout>
-
                             </LinearLayout>
-
                         </android.support.v7.widget.CardView>
                     </LinearLayout>
                     <LinearLayout
@@ -230,33 +275,45 @@
                         android:layout_marginBottom="10dp">
 
                         <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="4dp"
+                            card_view:cardCornerRadius="4dp">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
                                 <RelativeLayout
+                                    android:paddingTop="10dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center">
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:src="@drawable/education"
-                                        android:id="@+id/imgJadwal"
-                                        android:layout_centerInParent="true"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Input Data Jadwal"
-                                        android:textSize="16sp"
-                                        android:layout_below="@+id/imgJadwal"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        >
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/education"
+                                            android:id="@+id/imgJadwal"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            />
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="Input Data Jadwal Pelajaran"
+                                            android:textSize="16sp"
+                                            android:gravity="center|top"
+                                            android:layout_weight="1"/>
+                                    </LinearLayout>
                                     <Button
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -269,13 +326,7 @@
                         </android.support.v7.widget.CardView>
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="135dp"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="10dp">
 
-                    </LinearLayout>
 
                 </LinearLayout>
 

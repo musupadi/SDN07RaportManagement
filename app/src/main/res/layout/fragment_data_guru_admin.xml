@@ -7,96 +7,85 @@
     tools:context=".Admin.Fragment.DataGuruAdmin"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            card_view:cardCornerRadius="4dp"
-            android:background="@color/colorPrimary"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mencari Data Guru"
-                        android:textSize="20dp"
-                        android:gravity="center"
-                        android:textColor="@color/PureBlack"/>
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nama Guru"
-                        android:gravity="center"
-                        android:textColor="@color/PureBlack"/>
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="NIP Guru"
-                        android:gravity="center"/>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="Mencari"
-                        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-                </LinearLayout>
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <android.support.v7.widget.CardView
+        android:layout_weight="2"
+        android:padding="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        card_view:cardCornerRadius="4dp">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            card_view:cardCornerRadius="4dp"
-            android:background="@color/colorPrimary"
-            >
+            android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="30dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Data Guru"
-                    android:textSize="20dp"
+                    android:text="Mencari Data Guru"
+                    android:layout_gravity="center"
                     android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
                     android:textColor="@color/PureBlack"
-                    android:paddingBottom="5dp"/>
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerDataGuruAdmin"
+                    android:layout_marginBottom="10dp"/>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
 
-                </android.support.v7.widget.RecyclerView>
+                    <AutoCompleteTextView
+                        android:id="@+id/etNIP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="Masukan NIP Guru"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColorHint="@color/colorAccent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etNamaGuru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="Masukan Nama Guru"/>
+                </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:id="@+id/btnInput"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cari Data"
+                    android:textSize="20sp"
+                    android:background="@drawable/button_rounded"/>
             </LinearLayout>
+        </ScrollView>
 
-        </android.support.v7.widget.CardView>
 
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
+        <android.support.v7.widget.RecyclerView
+            android:layout_weight="1"
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>
