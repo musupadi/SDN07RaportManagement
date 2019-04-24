@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Guru.Fragment.AbsenSiswaGuru">
+    tools:context=".Guru.Fragment.AbsenSiswaGuru"
+    android:background="@color/colorWhite">
 
     <LinearLayout
         android:layout_width="match_parent"

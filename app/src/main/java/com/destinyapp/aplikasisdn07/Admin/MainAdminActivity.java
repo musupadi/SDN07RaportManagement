@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
-import com.destinyapp.aplikasisdn07.Admin.Fragment.Absen;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.AbsenVerif;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.CheckAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataGuruAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataJadwalAdmin;
@@ -38,9 +38,10 @@ import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataJadwal;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataKelasAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataMapel;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataSiswaAdmin;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.NilaiVerif;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.UpdateAbsensi;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.VerifAdminDashboard;
-import com.destinyapp.aplikasisdn07.Fragment.AboutFragment;
+import com.destinyapp.aplikasisdn07.About.AboutFragment;
 import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
@@ -66,14 +67,7 @@ public class MainAdminActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,7 +112,10 @@ public class MainAdminActivity extends AppCompatActivity
         String outputMapel = data.getStringExtra("OUTPUT_MAPEL");
         String Absen = data.getStringExtra("ABSEN");
         String Absensi = data.getStringExtra("ABSENSI");
+        String Nilai = data.getStringExtra("NILAI");
+        String KNilai = data.getStringExtra("KEY_NILAI");
         String NIS = data.getStringExtra("NIS");
+        String MAPEL = data.getStringExtra("MAPEL");
         if (inputGuru != null){
             fragment=new InputDataGuruAdmin();
         }else if(outputGuru != null){
@@ -142,13 +139,25 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(Absen !=null){
             Bundle bundle = new Bundle();
             bundle.putString("ABSEN",Absen);
-            fragment = new Absen();
+            fragment = new AbsenVerif();
             fragment.setArguments(bundle);
 
         }else if(Absensi !=null){
             Bundle bundle = new Bundle();
             bundle.putString("ABSENSI",Absensi);
             bundle.putString("NIS",NIS);
+            fragment = new UpdateAbsensi();
+            fragment.setArguments(bundle);
+        }else if(Nilai !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("NILAI",Nilai);
+            fragment = new NilaiVerif();
+            fragment.setArguments(bundle);
+        }else if(KNilai != null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_NILAI",KNilai);
+            bundle.putString("NIS",NIS);
+            bundle.putString("MAPEL",MAPEL);
             fragment = new UpdateAbsensi();
             fragment.setArguments(bundle);
         }

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Admin.Fragment.DataGuruAdmin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

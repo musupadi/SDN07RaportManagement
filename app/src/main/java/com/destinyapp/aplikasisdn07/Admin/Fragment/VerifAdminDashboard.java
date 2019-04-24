@@ -56,5 +56,21 @@ public class VerifAdminDashboard extends Fragment {
                 getActivity().startActivities(new Intent[]{goInput});
             }
         });
+        BelumNilai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("NILAI","belum");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
+        SudahNilai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("NILAI","sudah");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+        });
     }
 }

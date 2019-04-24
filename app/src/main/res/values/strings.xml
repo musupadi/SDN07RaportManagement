@@ -16,6 +16,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_siswa">Siswa Panel</string>
     <string name="title_activity_main_admin">Admin Panel</string>
+    <string name="about_supriyadi">Saya adalah seorang Full Stack Freelance Programmer untuk Platform Android,Desktop dan Web
+        Saya juga Seorang Mahasiswa Semester 8 di Universitas Indrapasta PGRI, Aplikasi ini dibuat untuk memenuhi tugas KKP dari
+        Kampus Kami dan juga untuk mempermudah manajemen raport pada sekolah.
+    </string>
 
     <string-array name="jk">
         <item>Pilih Jenis Kelamin</item>

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Guru.MainGuruActivity"
-    tools:showIn="@layout/app_bar_main_guru">
+    tools:showIn="@layout/app_bar_main_guru"
+    android:background="@drawable/backgroundiwa">
 
     <FrameLayout
         android:id="@+id/screen_areaMainGuru"

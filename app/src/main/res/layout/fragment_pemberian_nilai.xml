@@ -90,6 +90,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="Input Nilai"
+        style="@style/Widget.AppCompat.Button.Colored"
         />
 
 

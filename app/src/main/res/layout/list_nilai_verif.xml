@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    card_view:cardCornerRadius="4dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="8dp">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/ivPhotoSiswa"
+            android:layout_marginBottom="4dp"
+            tools:src="@color/colorAccent"/>
+        <TextView
+            android:layout_toRightOf="@id/ivPhotoSiswa"
+            android:layout_toEndOf="@id/ivPhotoSiswa"
+            android:id="@+id/tv_NamaSiswa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Nama Siswa"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+        <TextView
+            android:layout_below="@id/tv_NamaSiswa"
+            android:layout_toRightOf="@id/ivPhotoSiswa"
+            android:layout_toEndOf="@id/ivPhotoSiswa"
+            android:id="@+id/tv_NIS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="NIS"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"/>
+        <LinearLayout
+            android:id="@+id/LayoutSakit"
+            android:layout_below="@id/tv_NIS"
+            android:layout_toRightOf="@id/ivPhotoSiswa"
+            android:layout_toEndOf="@id/ivPhotoSiswa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Kelas"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : "/>
+            <TextView
+                android:id="@+id/tvKelas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LayoutIzin"
+            android:layout_below="@id/LayoutSakit"
+            android:layout_toRightOf="@id/ivPhotoSiswa"
+            android:layout_toEndOf="@id/ivPhotoSiswa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Mata Pelajaran"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : "/>
+            <TextView
+                android:id="@+id/tvMapel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LayoutAlpa"
+            android:layout_below="@id/LayoutIzin"
+            android:layout_toRightOf="@id/ivPhotoSiswa"
+            android:layout_toEndOf="@id/ivPhotoSiswa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Nilai"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : "/>
+            <TextView
+                android:id="@+id/tvNilai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/ivPhotoSiswa"
+            android:layout_toEndOf="@id/ivPhotoSiswa"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:id="@+id/btnStatus"
+                android:background="@drawable/button_rounded_primary"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

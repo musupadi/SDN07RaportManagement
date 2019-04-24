@@ -93,6 +93,10 @@ public interface  ApiRequest {
     Call<ResponseModel> getVerivAbsen(@Field("verif") String verif);
 
     @FormUrlEncoded
+    @POST("getVerifNilai.php")
+    Call<ResponseModel> getVerivNilai(@Field("verif") String verif);
+
+    @FormUrlEncoded
     @POST("getNamaKelas.php")
     Call<ResponseModel> getNamaKelas(@Field("id_kelas") String id_kelas);
 
@@ -125,6 +129,12 @@ public interface  ApiRequest {
                                         @Field("alpa") String alpa);
 
     @FormUrlEncoded
+    @POST("UpdateDataNilai.php")
+    Call<ResponseModel> updateDataNilai(@Field("nis") String nis,
+                                        @Field("mata_pelajaran") String mata_pelajaran,
+                                        @Field("nilai") String nilai);
+
+    @FormUrlEncoded
     @POST("UpdateNilaiSiswa.php")
     Call<ResponseModel> updateNilaiSiswa(@Field("nis") String nis,
                                          @Field("nilai") String nilai,
@@ -133,6 +143,12 @@ public interface  ApiRequest {
     @POST("UpdateVerifAbsen.php")
     Call<ResponseModel> updateVerifAbsen(@Field("nis") String nis,
                                          @Field("verif") String verif);
+
+    @FormUrlEncoded
+    @POST("UpdateVerifNilai.php")
+    Call<ResponseModel> updateVerifNilai(@Field("nis") String nis,
+                                         @Field("verif") String verif,
+                                         @Field("id_mapel") String id_mapel);
 
     @FormUrlEncoded
     @POST("getNilai.php")

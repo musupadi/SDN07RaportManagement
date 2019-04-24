@@ -6,6 +6,7 @@
     <color name="PureBlack">#000000</color>
     <color name="colorAbu">#696969</color>
     <color name="colorRed">#FF0000</color>
-    <color name="colorWhite">#FAFAFA</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparent">#CCCCCC</color>
     <color name="background">#EEEDEF</color>
 </resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfileMe"
+            android:layout_gravity="center|top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/fotome"
+            android:padding="30dp"
+            android:layout_weight="1"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1.5">
+
+                <TextView
+                    android:id="@+id/Nama"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:text="Muhammad Supriyadi"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+
+                    android:id="@+id/Tittle"
+                    android:textSize="18dp"
+                    android:text="Full Stack Programmer"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:padding="30dp"
+                    android:id="@+id/DeskripsiSaya"
+                    android:textSize="20dp"
+                    android:text="@string/about_supriyadi"
+                    android:gravity="center|top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </ScrollView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

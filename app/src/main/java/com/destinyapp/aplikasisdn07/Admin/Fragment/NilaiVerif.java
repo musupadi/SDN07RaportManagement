@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
-import com.destinyapp.aplikasisdn07.Admin.Adapter.AdapterDataGuruAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Adapter.AdapterVerifAbsensi;
+import com.destinyapp.aplikasisdn07.Admin.Adapter.AdapterVerifNilai;
 import com.destinyapp.aplikasisdn07.Models.DataModel;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
@@ -30,14 +30,13 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Absen extends Fragment {
+public class NilaiVerif extends Fragment {
 
     RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.LayoutManager mManager;
-
-    public Absen() {
+    public NilaiVerif() {
         // Required empty public constructor
     }
 
@@ -46,31 +45,31 @@ public class Absen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_absen, container, false);
+        return inflater.inflate(R.layout.fragment_nilai_verif, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
-        String ABSEN = this.getArguments().getString("ABSEN").toString();
+        String NILAI = this.getArguments().getString("NILAI").toString();
         mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(mManager);
-        getVerifAbsen(ABSEN);
-        if (ABSEN.equals("Belum")){
+        getVerifNilai(NILAI);
+        if (NILAI.equals("Belum")){
 
-        }else if(ABSEN.equals("Sudah")){
+        }else if(NILAI.equals("Sudah")){
 
         }
     }
-    private void getVerifAbsen(String verif){
+    private void getVerifNilai(String verif){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> GetAllDataGuru = api.getVerivAbsen(verif);
+        Call<ResponseModel> GetAllDataGuru = api.getVerivNilai(verif);
         GetAllDataGuru.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 mItems=response.body().getResult();
-                mAdapter = new AdapterVerifAbsensi(getActivity(),mItems);
+                mAdapter = new AdapterVerifNilai(getActivity(),mItems);
                 recyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }
