@@ -116,7 +116,7 @@ public class RaportSiswaFragment extends Fragment {
                 NamaSiswa.setText(nama);
                 NIS.setText(response.body().getNis());
                 Kelas.setText(response.body().getNama_kelas());
-                String BASE_URL = "http://192.168.0.3/AplikasiSDN07/";
+                String BASE_URL = getString(R.string.base_url);
                 String URL = BASE_URL+"ProfilePicture/Siswa/"+response.body().getProfile_siswa();
                 Glide.with(getActivity())
                         .load(URL)

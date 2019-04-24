@@ -20,6 +20,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main_guru"
-        app:menu="@menu/activity_main_guru_drawer" />
+        app:menu="@menu/activity_main_guru_drawer"
+        android:background="@drawable/whitebackground"/>
 
 </android.support.v4.widget.DrawerLayout>

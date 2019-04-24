@@ -14,7 +14,9 @@
         <activity
             android:name=".Admin.MainAdminActivity"
             android:label="@string/title_activity_main_admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".Siswa.MainSiswaActivity"
             android:label="@string/title_activity_main_siswa"

@@ -31,6 +31,7 @@ import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
 import com.destinyapp.aplikasisdn07.Session.DB_Helper;
+import com.destinyapp.aplikasisdn07.Siswa.Fragment.DashboardSiswa;
 import com.destinyapp.aplikasisdn07.Siswa.Fragment.JadwalBelajarSiswaFragment;
 import com.destinyapp.aplikasisdn07.Siswa.Fragment.RaportSiswaFragment;
 
@@ -54,14 +55,7 @@ public class MainSiswaActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -89,7 +83,18 @@ public class MainSiswaActivity extends AppCompatActivity
         navUsername.setText(User);
 
         Fragment fragment = null;
-        fragment = new JadwalBelajarSiswaFragment();
+        fragment = new DashboardSiswa();
+
+        //if else
+        Intent data = getIntent();
+        String Raport = data.getStringExtra("RAPORT");
+        String Jadwal = data.getStringExtra("JADWAL");
+        if (Raport !=null){
+            fragment=new RaportSiswaFragment();
+        }else if(Jadwal !=null){
+            fragment=new JadwalBelajarSiswaFragment();
+        }
+        //done
         ChangeFragment(fragment);
     }
 

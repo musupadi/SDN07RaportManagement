@@ -103,23 +103,17 @@ public class JadwalBelajarSiswaFragment extends Fragment {
     }
 
     private void getData(final String HariIni){
-        final ProgressDialog pd = new ProgressDialog(getActivity());
         dbHelper = new DB_Helper(getActivity());
         Cursor cursor = dbHelper.checkSession();
 
         while (cursor.moveToNext()){
             User=cursor.getString(0);
         }
-
-        pd.setMessage("Mengambil Data...");
-        pd.setCancelable(true);
-        pd.show();
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
         Call<ResponseModel> getJadwal = api.getJadwalBelajarSiswa(User,HariIni);
         getJadwal.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                pd.hide();
                 Log.d("RETRO","RESPONSE : "+response.body().getKode());
                 mItems=response.body().getResult();
 
@@ -132,7 +126,6 @@ public class JadwalBelajarSiswaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                pd.hide();
                 Log.d("RETRO","FAILED : respon gagal");
             }
         });
