@@ -118,8 +118,16 @@ public interface  ApiRequest {
     Call<ResponseModel> insertNilaiSiswa(@Field("nis") String nis,
                                         @Field("nip") String nip,
                                          @Field("nilai") String nilai,
-                                         @Field("id_mapel") String id_mapel);
+                                         @Field("id_mapel") String id_mapel,
+                                         @Field("verif")String verif);
 
+    @FormUrlEncoded
+    @POST("InsertAbsenSiswa.php")
+    Call<ResponseModel> insertAbsenSiswa(@Field("nis") String nis,
+                                         @Field("nip") String nip,
+                                         @Field("sakit") String sakit,
+                                         @Field("izin") String izin,
+                                         @Field("alpa")String alpa);
 
     @FormUrlEncoded
     @POST("UpdateDataAbsen.php")

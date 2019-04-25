@@ -178,7 +178,7 @@ public class PemberianNilaiFragment extends Fragment {
     private void insertData(final String idKelas, final String nis, final String nip, String id_mapel){
         String nilai = isiNilai.getText().toString();
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> insertNilai = api.insertNilaiSiswa(nis,nip,nilai,id_mapel);
+        Call<ResponseModel> insertNilai = api.insertNilaiSiswa(nis,nip,nilai,id_mapel,"belum");
         insertNilai.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

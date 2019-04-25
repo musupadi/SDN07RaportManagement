@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Guru.Fragment.RaportSiswaGuru"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukan Absensi Siswa"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textColor="@android:color/black"/>
+    <Spinner
+        android:id="@+id/SpinnerKelas"
+        android:autofillHints="Masukan Nama Kelas"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <AutoCompleteTextView
+            android:inputType="number"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:hint="Masukan Nomor Induk Siswa"
+            android:id="@+id/ACTNIS"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/etNamaSiswa"
+            android:hint="Nama Siswa"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:gravity="center"
+            android:hint="Masukan Jumlah Sakit"
+            android:id="@+id/etSakit"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/etIzin"
+            android:hint="Masukan Jumlah Izin"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/etAlpa"
+            android:hint="Masukan Jumlah Alpa"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukan Absensi"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+</LinearLayout>

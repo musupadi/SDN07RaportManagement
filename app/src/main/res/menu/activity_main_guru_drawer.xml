@@ -20,10 +20,6 @@
             android:id="@+id/nav_raportGuru"
             android:icon="@drawable/ic_dehaze_black_24dp"
             android:title="Raport Siswa" />
-        <item
-            android:id="@+id/nav_tugasGuru"
-            android:icon="@drawable/ic_dehaze_black_24dp"
-            android:title="Tugas Untuk Siswa" />
     </group>
 
     <item android:title="Account">

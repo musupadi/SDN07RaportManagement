@@ -67,16 +67,35 @@ public class UpdateNilai extends Fragment {
             }
         });
     }
+    private void getNilai(String NIS){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getNilai = api.getNilaiSiswa(NIS);
+        getNilai.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                nilai.setText(response.body().getNilai());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void UpdateDataNilai(String NIS,String Mapel){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
         Call<ResponseModel> GetAbsen = api.updateDataNilai(NIS,Mapel,nilai.getText().toString());
         GetAbsen.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
-                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
-                goInput.putExtra("NILAI","sudah");
-                getActivity().startActivities(new Intent[]{goInput});
+                if (response.body().getResponse().equals("Update")){
+                    Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("NILAI","sudah");
+                    getActivity().startActivities(new Intent[]{goInput});
+                }else{
+                    Toast.makeText(getActivity(),"Data Gagal Terupdate",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -87,17 +106,17 @@ public class UpdateNilai extends Fragment {
     }
     private void getDataNilai(String NIS, final String Mapel){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> GetAbsen = api.GetAbsenSiswa(NIS);
+        Call<ResponseModel> GetAbsen = api.GetNilai(NIS,Mapel);
         GetAbsen.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                mapel.setText(Mapel);
+                mapel.setText(response.body().getNama_mapel());
                 nilai.setText(response.body().getNilai());
             }
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-
+                Toast.makeText(getActivity(),"Koneksi Error",Toast.LENGTH_SHORT).show();
             }
         });
     }

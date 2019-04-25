@@ -102,12 +102,78 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerFinalNilai"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerFinalNilai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </android.support.v7.widget.RecyclerView>
+        <TableLayout
+            android:layout_weight="3"
+            android:padding="5dp"
+            android:layout_below="@+id/recyclerFinalNilai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_gravity="bottom"
+            android:gravity="bottom">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Sakit"/>
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text=" : "/>
+                <TextView
+                    android:id="@+id/tvSakitSiswa"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="1"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Izin"/>
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text=" : "/>
+                <TextView
+                    android:id="@+id/tvIzinSiswa"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Izin"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Tanpa Keterangan"/>
+                <TextView
+                    style="@style/TextAppearance.AppCompat"
+                    android:text=" : "/>
+                <TextView
+                    android:id="@+id/tvAlpaSiswa"
+                    android:layout_marginLeft="10dp"
+                    style="@style/TextAppearance.AppCompat"
+                    android:text="Bilkhis"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
 
 
 </LinearLayout>

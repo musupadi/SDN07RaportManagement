@@ -40,6 +40,7 @@ import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataMapel;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.InputDataSiswaAdmin;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.NilaiVerif;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.UpdateAbsensi;
+import com.destinyapp.aplikasisdn07.Admin.Fragment.UpdateNilai;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.VerifAdminDashboard;
 import com.destinyapp.aplikasisdn07.About.AboutFragment;
 import com.destinyapp.aplikasisdn07.MainActivity;
@@ -158,7 +159,7 @@ public class MainAdminActivity extends AppCompatActivity
             bundle.putString("KEY_NILAI",KNilai);
             bundle.putString("NIS",NIS);
             bundle.putString("MAPEL",MAPEL);
-            fragment = new UpdateAbsensi();
+            fragment = new UpdateNilai();
             fragment.setArguments(bundle);
         }
 

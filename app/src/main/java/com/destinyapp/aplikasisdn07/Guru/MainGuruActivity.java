@@ -26,10 +26,12 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Guru.Fragment.AbsenSiswa;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.AbsenSiswaGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.AbsensiSiswaGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.AllClassFragmentGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.AllSiswaInKelasGuru;
+import com.destinyapp.aplikasisdn07.Guru.Fragment.DashboardGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.GuruMengajarFragment;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.NilaiFragmentGuru;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.PemberianNilaiFragment;
@@ -39,6 +41,8 @@ import com.destinyapp.aplikasisdn07.MainActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
 import com.destinyapp.aplikasisdn07.Session.DB_Helper;
+import com.destinyapp.aplikasisdn07.Siswa.Fragment.JadwalBelajarSiswaFragment;
+import com.destinyapp.aplikasisdn07.Siswa.Fragment.RaportSiswaFragment;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -91,6 +95,10 @@ public class MainGuruActivity extends AppCompatActivity
         String idKelas = data.getStringExtra("id_kelas");
         String idMapel = data.getStringExtra("id_mapel");
         String NIS = data.getStringExtra("nis");
+        String JADWAL = data.getStringExtra("JADWAL");
+        String ABSEN = data.getStringExtra("ABSEN");
+        String NILAI = data.getStringExtra("NILAI");
+        String RAPORT = data.getStringExtra("RAPORT");
         final String absensi = data.getStringExtra("Absensi");
         final String kelas = data.getStringExtra("Kelas");
         final String penilaian = data.getStringExtra("Penilaian");
@@ -118,11 +126,17 @@ public class MainGuruActivity extends AppCompatActivity
             bundle.putString("KEY_NIS",NIS);
             fragment = new RaportFinalSiswaGuru();
             fragment.setArguments(bundle);
+        }else if(JADWAL != null){
+            fragment=new JadwalBelajarSiswaFragment();
+        }else if(ABSEN != null){
+            fragment=new AbsenSiswa();
+        }else if(NILAI !=null){
+            fragment=new NilaiFragmentGuru();
+        }else if(RAPORT !=null){
+            fragment=new RaportSiswaGuru();
         }else{
-            fragment = new GuruMengajarFragment();
+            fragment=new DashboardGuru();
         }
-
-
         ChangeFragment(fragment);
     }
 
@@ -173,9 +187,7 @@ public class MainGuruActivity extends AppCompatActivity
             fragment = new NilaiFragmentGuru();
         }else if (id == R.id.nav_raportGuru) {
             fragment = new RaportSiswaGuru();
-        } else if (id == R.id.nav_tugasGuru) {
-
-        } else if (id == R.id.nav_data_diriGuru) {
+        }else if (id == R.id.nav_data_diriGuru) {
 
         } else if (id == R.id.nav_keluarGuru) {
             logout();

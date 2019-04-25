@@ -2,6 +2,7 @@ package com.destinyapp.aplikasisdn07.Guru.Fragment;
 
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.destinyapp.aplikasisdn07.Guru.MainGuruActivity;
 import com.destinyapp.aplikasisdn07.Models.DataModel;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
+import com.destinyapp.aplikasisdn07.Session.DB_Helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +41,13 @@ import retrofit2.Response;
  */
 public class NilaiFragmentGuru extends Fragment {
 
+    Button btnInsert;
     Spinner Kelas;
     AutoCompleteTextView NIS,NamaMapel;
-    EditText NamaSiswa,idMapel,isiNilai,sakit,izin,alpa;
+    EditText NamaSiswa,Mapel,isiNilai;
+    DB_Helper dbHelper;
+    String User="";
+    String idMapel;
     private List<DataModel> aList = new ArrayList<>();
     private AdapterKelasSpinner aSpinner;
 
@@ -64,14 +70,18 @@ public class NilaiFragmentGuru extends Fragment {
         NIS = (AutoCompleteTextView)view.findViewById(R.id.ACTNISPenilaianGuru);
         NamaSiswa = (EditText) view.findViewById(R.id.tvNamaSiswaPenilaianGuru);
         NamaMapel = (AutoCompleteTextView) view.findViewById(R.id.ACTNamaPelajaranPenilaianGuru);
-        idMapel = (EditText)view.findViewById(R.id.tvIdPelajaranPenilaianGuru);
+        Mapel = (EditText)view.findViewById(R.id.tvIdPelajaranPenilaianGuru);
         isiNilai = (EditText)view.findViewById(R.id.etIsiNilaiGuru);
-        sakit = (EditText)view.findViewById(R.id.etBanyakSakitGuru);
-        izin = (EditText)view.findViewById(R.id.etBanyakIzinGuru);
-        alpa = (EditText)view.findViewById(R.id.etBanyakAlpaGuru);
+        btnInsert = (Button)view.findViewById(R.id.btnCheckRaport);
         getKelas();
         aSpinner = new AdapterKelasSpinner(getActivity(),aList);
         Kelas.setAdapter(aSpinner);
+        dbHelper = new DB_Helper(getActivity());
+        Cursor cursor = dbHelper.checkSession();
+
+        while (cursor.moveToNext()){
+            User=cursor.getString(0);
+        }
 
         Kelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -103,6 +113,37 @@ public class NilaiFragmentGuru extends Fragment {
                     String mapel = NamaMapel.getEditableText().toString();
                     getIDMapel(mapel);
                 }
+            }
+        });
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insert();
+            }
+        });
+    }
+    private void insert(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> GetKelas = api.insertNilaiSiswa(NIS.getEditableText().toString(),User,
+                isiNilai.getText().toString(),idMapel,"belum");
+        GetKelas.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.body().getResponse().equals("Insert")){
+                    Toast.makeText(getActivity(),"Data Nilai Berhasil Ditambahkan",Toast.LENGTH_SHORT).show();
+                    String nis=NIS.getEditableText().toString();
+                    Intent goInput = new Intent(getActivity(), MainGuruActivity.class);
+                    goInput.putExtra("nis",nis);
+                    goInput.putExtra("Check","check");
+                    getActivity().startActivities(new Intent[]{goInput});
+                }else{
+                    Toast.makeText(getActivity(),"Data Nilai Sudah Terisi Harap hubungi Admin",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -193,12 +234,13 @@ public class NilaiFragmentGuru extends Fragment {
     }
     private void getIDMapel(final String ID){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getIDMapel = api.getIDMapel(ID);
+        final Call<ResponseModel> getIDMapel = api.getIDMapel(ID);
         getIDMapel.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-                idMapel.setText(response.body().getId_mapel());
+                Mapel.setText(response.body().getId_mapel());
                 String nis = NIS.getEditableText().toString();
+                idMapel=response.body().getId_mapel();
                 AutoNilai(nis,response.body().getId_mapel());
             }
 
@@ -230,10 +272,7 @@ public class NilaiFragmentGuru extends Fragment {
         NIS.setText("");
         NamaSiswa.setText("");
         NamaMapel.setText("");
-        idMapel.setText("");
+        Mapel.setText("");
         isiNilai.setText("");
-        sakit.setText("");
-        izin.setText("");
-        alpa.setText("");
     }
 }

@@ -2,6 +2,7 @@ package com.destinyapp.aplikasisdn07.About;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,7 +28,7 @@ public class AboutFragment extends Fragment {
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
     private SliderAdapter sliderAdapter;
-    private Button btnBack,btnNext;
+    private Button btnBack,btnNext,btnPlay,btnPause,btnStop;
     private TextView[] mDots;
     private int CurrentPage;
 
@@ -62,7 +63,7 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mSlideViewPager.setCurrentItem(CurrentPage +1);
-                if (CurrentPage == 2){
+                if (CurrentPage == 4){
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }

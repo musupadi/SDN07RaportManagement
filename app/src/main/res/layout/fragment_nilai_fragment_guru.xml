@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Guru.Fragment.RaportSiswaGuru"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="30dp">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pilih Kelas"
+        android:text="Masukan Nilai Siswa"
         android:layout_gravity="center_horizontal"
         android:textSize="30dp"
         android:textColor="@android:color/black"/>
@@ -23,82 +24,96 @@
         android:layout_height="wrap_content">
     </Spinner>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
 
-    <AutoCompleteTextView
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:hint="Masukan Nomor Induk Siswa"
-        android:id="@+id/ACTNISPenilaianGuru"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/tvNamaSiswaPenilaianGuru"
-        android:hint="Nama Siswa"
-        tools:text="Muhammad Supriyadi"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        />
-    <AutoCompleteTextView
-        android:gravity="center"
-        android:hint="Nama Mata Pelajaran"
-        android:id="@+id/ACTNamaPelajaranPenilaianGuru"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/tvIdPelajaranPenilaianGuru"
-        tools:text="1"
-        android:hint="ID Mata Pelajaran"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        />
-    <EditText
-        android:id="@+id/etIsiNilaiGuru"
-        android:hint="Masukan Nilai Siswa"
-        tools:text="90"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        />
-    <EditText
-        android:id="@+id/etBanyakSakitGuru"
-        android:hint="Jumlah Sakit Siswa"
-        tools:text="1"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        />
-    <EditText
-        android:id="@+id/etBanyakIzinGuru"
-        android:hint="Jumlah Izin Siswa"
-        tools:text="0"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        />
-    <EditText
-        android:id="@+id/etBanyakAlpaGuru"
-        android:hint="Jumlah Alpa"
-        tools:text="1"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        />
+        <AutoCompleteTextView
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:hint="Masukan Nomor Induk Siswa"
+            android:id="@+id/ACTNISPenilaianGuru"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/tvNamaSiswaPenilaianGuru"
+            android:hint="Nama Siswa"
+            tools:text="Muhammad Supriyadi"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <AutoCompleteTextView
+            android:gravity="center"
+            android:hint="Nama Mata Pelajaran"
+            android:id="@+id/ACTNamaPelajaranPenilaianGuru"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/tvIdPelajaranPenilaianGuru"
+            tools:text="1"
+            android:hint="ID Mata Pelajaran"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/etIsiNilaiGuru"
+            android:hint="Masukan Nilai Siswa"
+            tools:text="90"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            />
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_marginTop="30dp"
         android:id="@+id/btnCheckRaport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check Raport"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Masukan Nilai"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 </LinearLayout>

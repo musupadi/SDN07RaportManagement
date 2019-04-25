@@ -42,7 +42,7 @@ import retrofit2.Response;
  */
 public class RaportFinalSiswaGuru extends Fragment {
 
-    TextView NamaSiswa,NIS,Kelas,tgl;
+    TextView NamaSiswa,NIS,Kelas,tgl,Sakit,Alpa,Izin;
     ImageView profile;
     private RecyclerView mRecycler;
     private RecyclerView.Adapter mAdapter;
@@ -70,11 +70,32 @@ public class RaportFinalSiswaGuru extends Fragment {
         tgl = (TextView)view.findViewById(R.id.tvTglSekarangFinal);
         profile = (ImageView)view.findViewById(R.id.ivPhotoSiswaFinal);
         mRecycler = (RecyclerView)view.findViewById(R.id.recyclerFinalNilai);
+        Sakit = (TextView)view.findViewById(R.id.tvSakitSiswa);
+        Alpa = (TextView)view.findViewById(R.id.tvAlpaSiswa);
+        Izin = (TextView)view.findViewById(R.id.tvIzinSiswa);
         mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         mRecycler.setLayoutManager(mManager);
         String nis = this.getArguments().getString("KEY_NIS").toString();
         getNamaFromNIS(nis);
         getNilaiFromNIS(nis);
+        getAbsensi(nis);
+    }
+    private void getAbsensi(String nis){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getAbsensi = api.GetAbsenSiswa(nis);
+        getAbsensi.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                Sakit.setText(response.body().getSakit());
+                Alpa.setText(response.body().getAlpa());
+                Izin.setText(response.body().getIzin());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam getNamaFromNis Method",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void getNamaFromNIS(String nis){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
