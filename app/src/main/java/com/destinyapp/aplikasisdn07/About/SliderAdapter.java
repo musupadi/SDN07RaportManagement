@@ -27,7 +27,8 @@ public class SliderAdapter extends PagerAdapter {
             1,
             2,
             3,
-            4
+            4,
+            5
     };
 
     public int[] slide_image ={
@@ -35,7 +36,8 @@ public class SliderAdapter extends PagerAdapter {
             R.drawable.juna,
             R.drawable.liviana,
             R.drawable.richi,
-            R.drawable.zuki
+            R.drawable.zuki,
+            R.drawable.resma
     };
 
     public String[] slide_nama ={
@@ -43,7 +45,8 @@ public class SliderAdapter extends PagerAdapter {
             "Mochammad Ardjun Adinugraha",
             "Liviana Febriyanti",
             "Richi Apriyanto",
-            "Hayyilah Al Marzuki"
+            "Hayyilah Al Marzuki",
+            "Resma Panjaitan"
     };
 
     public String[] slide_title = {
@@ -51,10 +54,12 @@ public class SliderAdapter extends PagerAdapter {
             "Front End Programmer",
             "Database Manager",
             "Back End Programmer",
-            "Back End Programmer"
+            "Back End Programmer",
+            "Database Manager"
     };
 
     public int[] slide_deskripsi = {
+            R.string.about_supriyadi,
             R.string.about_supriyadi,
             R.string.about_supriyadi,
             R.string.about_supriyadi,
@@ -63,6 +68,7 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public int[] suara_saya = {
+            R.raw.therisingshieldhero,
             R.raw.therisingshieldhero,
             R.raw.therisingshieldhero,
             R.raw.therisingshieldhero,

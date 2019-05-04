@@ -63,7 +63,7 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mSlideViewPager.setCurrentItem(CurrentPage +1);
-                if (CurrentPage == 4){
+                if (CurrentPage == 5){
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
@@ -78,7 +78,7 @@ public class AboutFragment extends Fragment {
     }
 
     public void addDotsIndicator(int posistion){
-        mDots = new TextView[5];
+        mDots = new TextView[6];
         mDotLayout.removeAllViews();
         for (int i = 0;i <mDots.length;i++){
             mDots[i] = new TextView(getActivity());
