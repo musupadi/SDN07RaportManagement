@@ -165,8 +165,6 @@ public class MainAdminActivity extends AppCompatActivity
 
         //DONE
         ChangeFragment(fragment);
-
-
     }
 
     @Override
@@ -278,6 +276,7 @@ public class MainAdminActivity extends AppCompatActivity
         AlertDialog alert = builder.create();
         alert.show();
     }
+
     private void getImageFromURL(String url){
         String BASE_URL = getString(R.string.base_url);
         String URL = BASE_URL+"ProfilePicture/Guru/"+url;

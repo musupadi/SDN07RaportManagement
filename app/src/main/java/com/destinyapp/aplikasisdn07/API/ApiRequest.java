@@ -256,4 +256,8 @@ public interface  ApiRequest {
     @POST("getGuru.php")
     Call<ResponseModel> getGuruComplete(@Field("nama") String nama,
                                 @Field("nip") String nip);
+
+    @FormUrlEncoded
+    @POST("SearchGuru.php")
+    Call<ResponseModel> SearchGuru(@Field("nip") String nip);
 }

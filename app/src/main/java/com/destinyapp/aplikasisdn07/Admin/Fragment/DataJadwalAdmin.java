@@ -48,6 +48,8 @@ public class DataJadwalAdmin extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private List<DataModel> mItems = new ArrayList<>();
     private RecyclerView.LayoutManager mManager;
+    private AdapterKelasSpinner aSpinner;
+    String idKelas;
 
     public DataJadwalAdmin() {
         // Required empty public constructor
@@ -65,10 +67,60 @@ public class DataJadwalAdmin extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recycler = (RecyclerView)view.findViewById(R.id.recycler);
+        Kelas = (Spinner)view.findViewById(R.id.spinnerNamaKelas);
 
         mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
         getAllJadwal();
+        getKelas();
+        aSpinner = new AdapterKelasSpinner(getActivity(),mItems);
+        Kelas.setAdapter(aSpinner);
+        Kelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                DataModel clickedItem = (DataModel) parent.getItemAtPosition(position);
+                String clickedItemNamaKelas = clickedItem.getNama_kelas();
+                GetIDKelas(clickedItemNamaKelas);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void GetIDKelas(String NamaKelas){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getIDKelas = api.GetIDKelas(NamaKelas);
+        getIDKelas.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                idKelas = response.body().getId_kelas();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam GetIDKelas",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getKelas(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> GetKelas = api.getKelas();
+        GetKelas.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getResult();
+                AdapterKelasSpinner adapter = new AdapterKelasSpinner(getActivity(),mItems);
+                Kelas.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Kelas Tidak Ditemukan",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void getAllJadwal(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
