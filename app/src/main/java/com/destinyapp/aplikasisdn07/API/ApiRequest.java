@@ -85,6 +85,11 @@ public interface  ApiRequest {
     Call<ResponseModel> getAllDataJadwal();
 
     @FormUrlEncoded
+    @POST("getJadwal.php")
+    Call<ResponseModel> getJadwal(@Field("id_kelas") String id_kelas,
+                                  @Field("hari") String hari);
+
+    @FormUrlEncoded
     @POST("getAllSiswaFromClassGuru.php")
     Call<ResponseModel> getAllSiswaFromGuru(@Field("id_kelas") String id_kelas);
 
@@ -251,6 +256,15 @@ public interface  ApiRequest {
     @POST("getGuruFromNama.php")
     Call<ResponseModel> getGuru(@Field("nama") String nama,
                                         @Field("nip") String nip);
+
+    @FormUrlEncoded
+    @POST("getSiswaFromNis.php")
+    Call<ResponseModel> getSiswaFromNis(@Field("nis") String nis);
+
+    @FormUrlEncoded
+    @POST("getSiswaFrom.php")
+    Call<ResponseModel> getSiswaFrom(@Field("nama_siswa") String nama_siswa,
+                                     @Field("nis") String nis);
 
     @FormUrlEncoded
     @POST("getGuru.php")

@@ -60,17 +60,6 @@ public class AdapterGetAllSiswa extends RecyclerView.Adapter<AdapterGetAllSiswa.
             nis = (TextView)v.findViewById(R.id.tv_NamaAllSiswaGuru);
             nama = (TextView)v.findViewById(R.id.tv_NISAllSiswa);
             profile = (ImageView)v.findViewById(R.id.ivPhotoAllSiswaGuru);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent goInput = new Intent(ctx, MainGuruActivity.class);
-                    goInput.putExtra("nama_siswa",dm.getNama_siswa());
-                    goInput.putExtra("nis",dm.getNis());
-                    goInput.putExtra("Penilaian","penilaian");
-                    goInput.putExtra("id_kelas",dm.getId_kelas());
-                    ctx.startActivities(new Intent[]{goInput});
-                }
-            });
         }
     }
 }

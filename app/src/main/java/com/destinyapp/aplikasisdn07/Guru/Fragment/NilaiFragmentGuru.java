@@ -15,13 +15,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
 import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterKelasSpinner;
-import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterNIS;
+import com.destinyapp.aplikasisdn07.GlobalAdapter.AdapterNIS;
 import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterNamaMapel;
 import com.destinyapp.aplikasisdn07.Guru.MainGuruActivity;
 import com.destinyapp.aplikasisdn07.Models.DataModel;

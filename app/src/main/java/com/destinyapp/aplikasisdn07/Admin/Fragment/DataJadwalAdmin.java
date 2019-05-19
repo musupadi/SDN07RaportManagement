@@ -68,6 +68,8 @@ public class DataJadwalAdmin extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recycler = (RecyclerView)view.findViewById(R.id.recycler);
         Kelas = (Spinner)view.findViewById(R.id.spinnerNamaKelas);
+        cari = (Button)view.findViewById(R.id.btnCari);
+        Hari = (Spinner)view.findViewById(R.id.spinnerHari);
 
         mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(mManager);
@@ -102,6 +104,30 @@ public class DataJadwalAdmin extends Fragment {
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 Toast.makeText(getActivity(),"Data Error dalam GetIDKelas",Toast.LENGTH_SHORT).show();
+            }
+        });
+        cari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDataJadwal();
+            }
+        });
+    }
+    private void getDataJadwal(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> GetAllDataGuru = api.getJadwal(idKelas,Hari.getSelectedItem().toString());
+        GetAllDataGuru.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                mItems=response.body().getResult();
+                mAdapter = new AdapterJadwalBelajarSiswa(getActivity(),mItems);
+                recycler.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error pada Method getAllGuru",Toast.LENGTH_SHORT).show();
             }
         });
     }

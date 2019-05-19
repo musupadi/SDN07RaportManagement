@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
 import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterKelasSpinner;
-import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterNIS;
+import com.destinyapp.aplikasisdn07.GlobalAdapter.AdapterNIS;
 import com.destinyapp.aplikasisdn07.Guru.MainGuruActivity;
 import com.destinyapp.aplikasisdn07.Models.DataModel;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
