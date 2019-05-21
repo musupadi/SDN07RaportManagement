@@ -258,11 +258,12 @@ public interface  ApiRequest {
                                         @Field("nip") String nip);
 
     @FormUrlEncoded
-    @POST("getSiswaFromNis.php")
-    Call<ResponseModel> getSiswaFromNis(@Field("nis") String nis);
+    @POST("getSiswaData.php")
+    Call<ResponseModel> getSiswaDataSiswa(@Field("nis") String nis,
+                                          @Field("nama_siswa") String nama_siswa);
 
     @FormUrlEncoded
-    @POST("getSiswaFrom.php")
+    @POST("getSiswaAutoText.php")
     Call<ResponseModel> getSiswaFrom(@Field("nama_siswa") String nama_siswa,
                                      @Field("nis") String nis);
 
@@ -274,4 +275,28 @@ public interface  ApiRequest {
     @FormUrlEncoded
     @POST("SearchGuru.php")
     Call<ResponseModel> SearchGuru(@Field("nip") String nip);
+
+    @FormUrlEncoded
+    @POST("searchJadwal.php")
+    Call<ResponseModel> searchJadwal(@Field("id_mapel") String id_mapel,
+                                     @Field("tingkat_kelas") String tingkat_kelas);
+
+    @FormUrlEncoded
+    @POST("searchMapel.php")
+    Call<ResponseModel> searchMapel(@Field("nama_mapel") String nama_mapel,
+                                     @Field("tingkat_kelas") String tingkat_kelas);
+
+    @FormUrlEncoded
+    @POST("DeleteKelas.php")
+    Call<ResponseModel> DeleteKelas(@Field("id_kelas") String id_kelas);
+
+    @FormUrlEncoded
+    @POST("getDataKelas.php")
+    Call<ResponseModel> Classed(@Field("id_kelas") String id_kelas);
+
+    @FormUrlEncoded
+    @POST("UpdateKelas.php")
+    Call<ResponseModel> UpdateKelas(@Field("id_kelas") String id_kelas,
+                                    @Field("nama_kelas") String nama_kelas,
+                                    @Field("tingkat_kelas") String tingkat_kelas);
 }

@@ -1,6 +1,7 @@
 package com.destinyapp.aplikasisdn07.Admin.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Admin.MainAdminActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
 
@@ -55,10 +57,63 @@ public class InputDataKelasAdmin extends Fragment {
         tingkatkelas = (Spinner)view.findViewById(R.id.spinnerTingkatKelas);
         namaKelas = (EditText)view.findViewById(R.id.etNamaKelas);
         insert = (Button)view.findViewById(R.id.btnInput);
-        insert.setOnClickListener(new View.OnClickListener() {
+        String UPDATE = this.getArguments().getString("KEY_UPDATE").toString();
+        final String IDKELAS = this.getArguments().getString("KEY_KELAS").toString();
+        if (UPDATE.equals("Update")){
+            getDataKelas(IDKELAS);
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UpdateData(IDKELAS);
+                }
+            });
+        }else{
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    insertDataKelas();
+                }
+            });
+        }
+    }
+    private void UpdateData(String IDKelas){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> updateData = api.UpdateKelas(IDKelas,
+                namaKelas.getEditableText().toString(),
+                tingkatkelas.getSelectedItem().toString());
+        updateData.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onClick(View v) {
-                insertDataKelas();
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.body().getResponse().equals("Update")){
+                    Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("OUTPUT_KELAS","output_kelas");
+                    getActivity().startActivities(new Intent[]{goInput});
+                }else{
+                    Toast.makeText(getActivity(),"Data Gagal Terupdate",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Internet Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getDataKelas(String IDKelas){
+
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getDataKelas = api.Classed(IDKelas);
+        getDataKelas.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                namaKelas.setText(response.body().getNama_kelas());
+                tingkatkelas.setSelection(Integer.parseInt(response.body().getTingkat_kelas()));
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Internet Error",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -79,7 +134,7 @@ public class InputDataKelasAdmin extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Toast.makeText(getActivity(),"Data Error pada method insertDataKelas",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Internet Error",Toast.LENGTH_SHORT).show();
             }
         });
     }

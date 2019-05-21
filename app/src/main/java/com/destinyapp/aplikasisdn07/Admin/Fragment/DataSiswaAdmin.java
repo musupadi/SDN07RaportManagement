@@ -92,7 +92,7 @@ public class DataSiswaAdmin extends Fragment {
     }
     private void SearchData(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getSiswaData = api.getSiswaFromNis(NIS.getEditableText().toString());
+        Call<ResponseModel> getSiswaData = api.getSiswaDataSiswa(NIS.getEditableText().toString(),nama.getEditableText().toString());
         getSiswaData.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

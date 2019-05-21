@@ -117,6 +117,11 @@ public class MainAdminActivity extends AppCompatActivity
         String KNilai = data.getStringExtra("KEY_NILAI");
         String NIS = data.getStringExtra("NIS");
         String MAPEL = data.getStringExtra("MAPEL");
+
+        //Update Data Kelas
+        String updateData = data.getStringExtra("UPDATE_KELAS");
+        String idKelas = data.getStringExtra("ID_KELAS");
+        //
         if (inputGuru != null){
             fragment=new InputDataGuruAdmin();
         }else if(outputGuru != null){
@@ -126,7 +131,11 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(outputSiswa != null){
             fragment=new DataSiswaAdmin();
         }else if(inputKelas !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Input");
+            bundle.putString("KEY_KELAS","");
             fragment=new InputDataKelasAdmin();
+            fragment.setArguments(bundle);
         }else if(outputKelas !=null){
             fragment=new DataKelasAdmin();
         }else if(inputJadwal !=null){
@@ -160,6 +169,12 @@ public class MainAdminActivity extends AppCompatActivity
             bundle.putString("NIS",NIS);
             bundle.putString("MAPEL",MAPEL);
             fragment = new UpdateNilai();
+            fragment.setArguments(bundle);
+        }else if(updateData !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Update");
+            bundle.putString("KEY_KELAS",idKelas);
+            fragment=new InputDataKelasAdmin();
             fragment.setArguments(bundle);
         }
 
