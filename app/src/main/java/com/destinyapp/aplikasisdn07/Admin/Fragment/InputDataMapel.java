@@ -48,10 +48,59 @@ public class InputDataMapel extends Fragment {
         NamaMapel = (EditText)view.findViewById(R.id.etNamaMapel);
         tingkatKelas = (Spinner)view.findViewById(R.id.spinnerTingkatKelas);
         Insert = (Button)view.findViewById(R.id.btnInput);
-        Insert.setOnClickListener(new View.OnClickListener() {
+        String UPDATE = this.getArguments().getString("KEY_UPDATE").toString();
+        final String IDMAPEL = this.getArguments().getString("KEY_MAPEL").toString();
+        if (UPDATE.equals("Update")){
+            getDataMapel(IDMAPEL);
+            Insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updateData(IDMAPEL);
+                }
+            });
+        }else{
+            Insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    InsertData();
+                }
+            });
+        }
+    }
+    private void updateData(final String idMapel){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> insertDataMapel = api.UpdateMapel(idMapel,
+                NamaMapel.getText().toString(),
+                tingkatKelas.getSelectedItem().toString());
+        insertDataMapel.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onClick(View v) {
-                InsertData();
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if(response.body().getResponse().equals("Update")){
+                    Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(),"Data Mata Pelajaran Tidak Ditemukan",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal Silahkan Coba lagi",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getDataMapel(String idMapel){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getData = api.getDataMapel(idMapel);
+        getData.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                NamaMapel.setText(response.body().getNama_mapel());
+                tingkatKelas.setSelection(Integer.parseInt(response.body().getTingkat_kelas()));
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Internet Error",Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -18,7 +18,7 @@
         android:orientation="horizontal">
         <ImageView
             android:layout_width="150dp"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:id="@+id/ivPhotoGuruAdmin"
             android:layout_marginBottom="4dp"
@@ -75,46 +75,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="Tempat,Tanggal Lahir"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" : "/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvTTLGuruAdmin"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="Agama"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" : "/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvAgamaGuruAdmin"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
                     android:text="Nomor Telepon"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -147,26 +107,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvJabatanGuruAdmin"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="Pendidikan"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" : "/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvPendidikanGuruAdmin"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_marginLeft="5dp"

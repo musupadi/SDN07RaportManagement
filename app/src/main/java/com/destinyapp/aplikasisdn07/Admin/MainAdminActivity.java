@@ -122,6 +122,14 @@ public class MainAdminActivity extends AppCompatActivity
         String updateData = data.getStringExtra("UPDATE_KELAS");
         String idKelas = data.getStringExtra("ID_KELAS");
         //
+        //Update Data Mapel
+        String updateDataMapel = data.getStringExtra("UPDATE_MAPEL");
+        String idMapel = data.getStringExtra("ID_MAPEL");
+        //
+        //Update Data Jadwal
+        String updateDataJadwal = data.getStringExtra("UPDATE_JADWAL");
+        String idJadwal = data.getStringExtra("ID_JADWAL");
+        //
         if (inputGuru != null){
             fragment=new InputDataGuruAdmin();
         }else if(outputGuru != null){
@@ -133,17 +141,25 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(inputKelas !=null){
             Bundle bundle = new Bundle();
             bundle.putString("KEY_UPDATE","Input");
-            bundle.putString("KEY_KELAS","");
+            bundle.putString("KEY_MAPEL","");
             fragment=new InputDataKelasAdmin();
             fragment.setArguments(bundle);
         }else if(outputKelas !=null){
             fragment=new DataKelasAdmin();
         }else if(inputJadwal !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Input");
+            bundle.putString("KEY_JADWAL","");
             fragment=new InputDataJadwal();
+            fragment.setArguments(bundle);
         }else if(outputJadwal !=null){
             fragment=new DataJadwalAdmin();
         }else if(inputMapel !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Input");
+            bundle.putString("KEY_KELAS","");
             fragment=new InputDataMapel();
+            fragment.setArguments(bundle);
         }else if(outputMapel !=null){
             fragment=new DataMataPelajaranAdmin();
         }else if(Absen !=null){
@@ -151,7 +167,6 @@ public class MainAdminActivity extends AppCompatActivity
             bundle.putString("ABSEN",Absen);
             fragment = new AbsenVerif();
             fragment.setArguments(bundle);
-
         }else if(Absensi !=null){
             Bundle bundle = new Bundle();
             bundle.putString("ABSENSI",Absensi);
@@ -174,6 +189,18 @@ public class MainAdminActivity extends AppCompatActivity
             Bundle bundle = new Bundle();
             bundle.putString("KEY_UPDATE","Update");
             bundle.putString("KEY_KELAS",idKelas);
+            fragment=new InputDataKelasAdmin();
+            fragment.setArguments(bundle);
+        }else if(updateDataMapel !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Update");
+            bundle.putString("KEY_MAPEL",idMapel);
+            fragment=new InputDataMapel();
+            fragment.setArguments(bundle);
+        }else if(updateDataJadwal !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Update");
+            bundle.putString("KEY_MAPEL",idJadwal);
             fragment=new InputDataKelasAdmin();
             fragment.setArguments(bundle);
         }

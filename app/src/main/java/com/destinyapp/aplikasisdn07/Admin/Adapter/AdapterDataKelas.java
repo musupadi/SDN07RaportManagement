@@ -109,8 +109,8 @@ public class AdapterDataKelas extends RecyclerView.Adapter<AdapterDataKelas.Hold
                                 }
                             })
                             //Set your icon here
-                            .setTitle("Absensi")
-                            .setIcon(R.drawable.icon);
+                            .setTitle("Data Kelas")
+                            .setIcon(R.drawable.classroom);
                     AlertDialog alert = builder.create();
                     alert.show();
                 }

@@ -67,6 +67,8 @@ public class InputDataJadwal extends Fragment {
         Insert = (Button)view.findViewById(R.id.btnInput);
         dariJam = (Spinner)view.findViewById(R.id.spinnerDariJam);
         sampaiJam = (Spinner)view.findViewById(R.id.spinnerSampaiJam);
+        String UPDATE = this.getArguments().getString("KEY_UPDATE").toString();
+        final String IDMAPEL = this.getArguments().getString("KEY_MAPEL").toString();
         getKelas();
         getMapel();
         getAutoNIP();
@@ -102,13 +104,21 @@ public class InputDataJadwal extends Fragment {
                 }
             }
         });
-        Insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String Mapel = mapel.getEditableText().toString();
-                getIDMapel(Mapel);
-            }
-        });
+        if (UPDATE.equals("Update")){
+
+        }else{
+            Insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String Mapel = mapel.getEditableText().toString();
+                    getIDMapel(Mapel);
+                }
+            });
+        }
+
+    }
+    private void UpdateJadwal(){
+
     }
     private void getAuto(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);

@@ -291,12 +291,40 @@ public interface  ApiRequest {
     Call<ResponseModel> DeleteKelas(@Field("id_kelas") String id_kelas);
 
     @FormUrlEncoded
+    @POST("DeleteMapel.php")
+    Call<ResponseModel> DeleteMapel(@Field("id_mapel") String id_mapel);
+
+    @FormUrlEncoded
+    @POST("DeleteJadwal.php")
+    Call<ResponseModel> DeleteJadwal(@Field("id_jadwal") String id_jadwal);
+
+    @FormUrlEncoded
+    @POST("DeleteGuru.php")
+    Call<ResponseModel> DeleteGuru(@Field("nip") String nip);
+
+    @FormUrlEncoded
+    @POST("DeleteSiswa.php")
+    Call<ResponseModel> DeleteSiswa(@Field("nis") String nis);
+
+    @FormUrlEncoded
     @POST("getDataKelas.php")
     Call<ResponseModel> Classed(@Field("id_kelas") String id_kelas);
+
+    @FormUrlEncoded
+    @POST("getDataMapel.php")
+    Call<ResponseModel> getDataMapel(@Field("id_mapel") String id_mapel);
+
+
 
     @FormUrlEncoded
     @POST("UpdateKelas.php")
     Call<ResponseModel> UpdateKelas(@Field("id_kelas") String id_kelas,
                                     @Field("nama_kelas") String nama_kelas,
+                                    @Field("tingkat_kelas") String tingkat_kelas);
+
+    @FormUrlEncoded
+    @POST("UpdateDataMapel.php")
+    Call<ResponseModel> UpdateMapel(@Field("id_mapel") String id_mapel,
+                                    @Field("nama_mapel") String nama_mapel,
                                     @Field("tingkat_kelas") String tingkat_kelas);
 }
