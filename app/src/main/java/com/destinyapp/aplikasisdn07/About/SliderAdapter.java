@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.R;
 
@@ -60,11 +61,11 @@ public class SliderAdapter extends PagerAdapter {
 
     public int[] slide_deskripsi = {
             R.string.about_supriyadi,
-            R.string.about_supriyadi,
-            R.string.about_supriyadi,
-            R.string.about_supriyadi,
-            R.string.about_supriyadi,
-            R.string.about_supriyadi
+            R.string.about_richi,
+            R.string.about_richi,
+            R.string.about_richi,
+            R.string.about_richi,
+            R.string.about_richi
     };
 
     public int[] suara_saya = {
@@ -102,6 +103,12 @@ public class SliderAdapter extends PagerAdapter {
         Tittle.setText(slide_title[position]);
         Deskripsi.setText(slide_deskripsi[position]);
         final MediaPlayer SuaraMe = MediaPlayer.create(context,suara_saya[position]);
+        Deskripsi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"Tekan Untuk mendengarkan Suara Saya",Toast.LENGTH_SHORT).show();
+            }
+        });
         Deskripsi.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

@@ -58,6 +58,7 @@ public class MainGuruActivity extends AppCompatActivity
     String User="";
     TextView navUsername,navName;
     CircleImageView navHeaderPP;
+    private long backPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +149,15 @@ public class MainGuruActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            long t = System.currentTimeMillis();
+            if (t - backPressedTime > 2000) {    // 2 secs
+                backPressedTime = t;
+                Toast.makeText(this, "Tekan Lagi Untuk Logout",
+                        Toast.LENGTH_SHORT).show();
+
+            } else {
+                logout();
+            }
         }
     }
 

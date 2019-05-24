@@ -61,6 +61,7 @@ public class MainAdminActivity extends AppCompatActivity
     String User="";
     TextView navUsername,navName;
     CircleImageView navHeaderPP;
+    private long backPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,7 +159,7 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(inputKelas !=null){
             Bundle bundle = new Bundle();
             bundle.putString("KEY_UPDATE","Input");
-            bundle.putString("KEY_MAPEL","");
+            bundle.putString("KEY_KELAS","");
             fragment=new InputDataKelasAdmin();
             fragment.setArguments(bundle);
         }else if(outputKelas !=null){
@@ -243,8 +244,16 @@ public class MainAdminActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        }else {
+            long t = System.currentTimeMillis();
+            if (t - backPressedTime > 2000) {    // 2 secs
+                backPressedTime = t;
+                Toast.makeText(this, "Tekan Lagi Untuk Logout",
+                        Toast.LENGTH_SHORT).show();
+
+            } else {
+                logout();
+            }
         }
     }
 
