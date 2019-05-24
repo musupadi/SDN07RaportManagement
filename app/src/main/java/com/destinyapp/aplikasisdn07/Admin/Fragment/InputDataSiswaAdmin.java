@@ -68,7 +68,8 @@ public class InputDataSiswaAdmin extends Fragment {
         pekerjaanibu = (EditText)view.findViewById(R.id.etPekerjaanIbu);
         pekerjanaayah = (EditText)view.findViewById(R.id.etPekerjaanAyah);
         insert = (Button)view.findViewById(R.id.btnInput);
-
+        String UPDATE = this.getArguments().getString("KEY_UPDATE").toString();
+        final String NIS = this.getArguments().getString("KEY_NIS").toString();
         List<String> JK = new ArrayList<>();
         JK.add(0,"Pilih Jenis Kelamin");
         JK.add("Pria");
@@ -110,10 +111,79 @@ public class InputDataSiswaAdmin extends Fragment {
 
             }
         });
-        insert.setOnClickListener(new View.OnClickListener() {
+        if (UPDATE.equals("Update")){
+            insert.setText("Update");
+            getDataSiswa(NIS);
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UpdateData();
+                }
+            });
+        }else{
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Insert();
+                }
+            });
+        }
+    }
+    private void UpdateData(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> updateSiswa = api.UpdateSiswa(nis.getText().toString(),
+                nama.getText().toString(),
+                jenisKelamin,
+                tahunajaran.getText().toString(),
+                namaibu.getText().toString(),
+                namaayah.getText().toString(),
+                pekerjanaayah.getText().toString(),
+                pekerjaanibu.getText().toString(),
+                idKelas);
+        updateSiswa.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onClick(View v) {
-                Insert();
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                String Response = response.body().getResponse();
+                if(Response.equals("Update")){
+                    Toast.makeText(getActivity(),"Data Berhasil Diubah",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("OUTPUT_DATA_GURU","input");
+                    getActivity().startActivities(new Intent[]{goInput});
+                }else if(Response.equals("Insert")){
+                    Toast.makeText(getActivity(),"Data Tidak Ditemukan",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam Method InsertData",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getDataSiswa(final String niss){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> GetData = api.getDataSiswaFromNIS(niss);
+        GetData.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                nis.setText(niss);
+                nama.setText(response.body().getNama_siswa());
+                if (response.body().getJk_siswa().equals("Pria")){
+                    jk.setSelection(1);
+                }else if(response.body().getJk_siswa().equals("Wanita")){
+                    jk.setSelection(2);
+                }
+                tahunajaran.setText(response.body().getTahunajaran());
+                namaayah.setText(response.body().getNamaayah());
+                namaibu.setText(response.body().getNamaibu());
+                pekerjanaayah.setText(response.body().getPekerjaanayah());
+                pekerjaanibu.setText(response.body().getPekerjaanibu());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }

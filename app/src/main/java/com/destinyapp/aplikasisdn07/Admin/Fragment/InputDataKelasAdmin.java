@@ -61,6 +61,7 @@ public class InputDataKelasAdmin extends Fragment {
         final String IDKELAS = this.getArguments().getString("KEY_KELAS").toString();
         if (UPDATE.equals("Update")){
             getDataKelas(IDKELAS);
+            insert.setText("Update");
             insert.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

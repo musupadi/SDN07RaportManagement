@@ -1,6 +1,7 @@
 package com.destinyapp.aplikasisdn07.Admin.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Admin.MainAdminActivity;
 import com.destinyapp.aplikasisdn07.GlobalAdapter.AdapterAutoCompleteNIP;
 import com.destinyapp.aplikasisdn07.GlobalAdapter.AdapterAutoCompleteNamaGuru;
 import com.destinyapp.aplikasisdn07.Guru.Adapter.AdapterKelasSpinner;
@@ -68,7 +70,7 @@ public class InputDataJadwal extends Fragment {
         dariJam = (Spinner)view.findViewById(R.id.spinnerDariJam);
         sampaiJam = (Spinner)view.findViewById(R.id.spinnerSampaiJam);
         String UPDATE = this.getArguments().getString("KEY_UPDATE").toString();
-        final String IDMAPEL = this.getArguments().getString("KEY_MAPEL").toString();
+        final String IDJADWAL = this.getArguments().getString("KEY_JADWAL").toString();
         getKelas();
         getMapel();
         getAutoNIP();
@@ -105,20 +107,73 @@ public class InputDataJadwal extends Fragment {
             }
         });
         if (UPDATE.equals("Update")){
-
+            UpdateJadwal(IDJADWAL);
+            Insert.setText("Update");
+            Insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String Mapel = mapel.getEditableText().toString();
+                    getIDMapel(Mapel,"Update",IDJADWAL);
+                }
+            });
         }else{
             Insert.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String Mapel = mapel.getEditableText().toString();
-                    getIDMapel(Mapel);
+                    getIDMapel(Mapel,"Input","");
                 }
             });
         }
 
     }
-    private void UpdateJadwal(){
+    private void UpdateData(String IDjadwal,String idMapel){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> updateDataJadwal = api.UpdateJadwal(IDjadwal,
+                nip.getText().toString(),
+                idKelas,
+                idMapel,
+                hari.getSelectedItem().toString(),
+                dariJam.getSelectedItem().toString(),
+                sampaiJam.getSelectedItem().toString()
+        );
+        updateDataJadwal.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.body().getResponse().equals("Update")){
+                    Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("OUTPUT_JADWAL","output_jadwal");
+                    getActivity().startActivities(new Intent[]{goInput});
+                }else if(response.body().getResponse().equals("error")){
+                    Toast.makeText(getActivity(),"Data Update Error",Toast.LENGTH_SHORT).show();
+                }else if(response.body().getResponse().equals("Insert")){
+                    Toast.makeText(getActivity(),"Data Tidak Ditemukan",Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void UpdateJadwal(String idJadwal){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        final Call<ResponseModel> getData = api.getDataJadwal(idJadwal);
+        getData.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                nip.setText(response.body().getNip());
+                nama.setText(response.body().getNama());
+                mapel.setText(response.body().getNama_mapel());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Error",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void getAuto(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
@@ -147,6 +202,9 @@ public class InputDataJadwal extends Fragment {
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if (response.body().getResponse().equals("Insert")){
                     Toast.makeText(getActivity(),"Data Berhasil Terinput",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("OUTPUT_JADWAL","output_jadwal");
+                    getActivity().startActivities(new Intent[]{goInput});
                 }else{
                     Toast.makeText(getActivity(),"Data Jadwal Sudah Teriisi",Toast.LENGTH_SHORT).show();
                 }
@@ -158,14 +216,19 @@ public class InputDataJadwal extends Fragment {
             }
         });
     }
-    private void getIDMapel(final String ID){
+    private void getIDMapel(final String ID, final String InputUpdate,final String idJadwal){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
         Call<ResponseModel> getIDMapel = api.getIDMapel(ID);
         getIDMapel.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 String idMapel= response.body().getId_mapel();
-                InputData(idMapel);
+                if(InputUpdate.equals("Input")){
+                    InputData(idMapel);
+                }else if(InputUpdate.equals("Update")){
+                    UpdateData(idJadwal,idMapel);
+                }
+
             }
 
             @Override

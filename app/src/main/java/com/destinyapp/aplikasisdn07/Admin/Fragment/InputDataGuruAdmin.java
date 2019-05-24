@@ -77,7 +77,8 @@ public class InputDataGuruAdmin extends Fragment {
         jk = (Spinner) view.findViewById(R.id.SpinnerKelamin);
         alamat = (EditText)view.findViewById(R.id.etAlamat);
         insert = (Button)view.findViewById(R.id.btnInput);
-
+        String UPDATE = this.getArguments().getString("KEY_UPDATE").toString();
+        final String NIP = this.getArguments().getString("KEY_NIP").toString();
         //getAllGuru();
 
         List<String> JK = new ArrayList<>();
@@ -103,16 +104,84 @@ public class InputDataGuruAdmin extends Fragment {
 
             }
         });
-        insert.setOnClickListener(new View.OnClickListener() {
+        if (UPDATE.equals("Update")){
+            getDataGuruFromNIP(NIP);
+            insert.setText("Update");
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updateGuru();
+                }
+            });
+        }else{
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    insertGuru();
+                }
+            });
+        }
+    }
+    private void getDataGuruFromNIP(final String NIP){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> getData = api.getDataGuru(NIP);
+        getData.enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onClick(View v) {
-                insertGuru();
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                nip.setText(NIP);
+                password.setText(response.body().getPassword());
+                nama.setText(response.body().getNama());
+                TempatLahir.setText(response.body().getTempatlahir());
+                agama.setText(response.body().getAgama());
+                notelp.setText(response.body().getNotelp());
+                jabatan.setText(response.body().getJabatan());
+                pendidikan.setText(response.body().getPendidikan());
+                if (response.body().getJk().equals("Pria")){
+                    jk.setSelection(1);
+                }else if(response.body().getJk().equals("Wanita")){
+                    jk.setSelection(2);
+                }
+                alamat.setText(response.body().getAlamat());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Koneksi Gagal",Toast.LENGTH_SHORT).show();
             }
         });
     }
     private String getTanggal(){
         String tanggal = tahun.getSelectedItem().toString()+"-"+bulan.getSelectedItem().toString()+"-"+tgl.getSelectedItem().toString();
         return tanggal;
+    }
+    private void updateGuru(){
+        ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
+        Call<ResponseModel> insertDataGuru = api.UpdateGuru(nip.getText().toString(),
+                password.getText().toString(),
+                nama.getText().toString(),
+                TempatLahir.getText().toString(),
+                getTanggal(),
+                agama.getText().toString(),
+                notelp.getText().toString(),
+                jabatan.getText().toString(),
+                pendidikan.getText().toString(),
+                jenisKelamin,
+                defaultPPGuru,
+                alamat.getText().toString());
+        insertDataGuru.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
+                Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                goInput.putExtra("OUTPUT_GURU","input");
+                getActivity().startActivities(new Intent[]{goInput});
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(),"Data Error dalam Method InsertData",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void insertGuru(){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);

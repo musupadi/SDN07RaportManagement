@@ -32,7 +32,12 @@
     </item>
 
     <item
+        android:id="@+id/nav_about_sekolah"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="About SDN 07"
+        />
+    <item
         android:id="@+id/nav_about"
         android:icon="@drawable/ic_menu_send"
-        android:title="About" />
+        android:title="About Developer" />
 </menu>

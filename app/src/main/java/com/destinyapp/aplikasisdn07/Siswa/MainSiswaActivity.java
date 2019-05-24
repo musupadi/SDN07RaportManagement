@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.About.AboutFragment;
+import com.destinyapp.aplikasisdn07.About.AboutSDN07;
 import com.destinyapp.aplikasisdn07.Guru.Fragment.GuruMengajarFragment;
 import com.destinyapp.aplikasisdn07.Guru.MainGuruActivity;
 import com.destinyapp.aplikasisdn07.MainActivity;
@@ -144,6 +146,11 @@ public class MainSiswaActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout_siswa) {
             logout();
+        }else if (id == R.id.nav_about_sekolah) {
+            Intent intent = new Intent(this, AboutSDN07.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_about) {
+            fragment=new AboutFragment();
         }
         ChangeFragment(fragment);
 

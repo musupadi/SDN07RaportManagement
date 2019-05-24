@@ -96,7 +96,11 @@ public class AdapterDataGuruAdmin extends RecyclerView.Adapter<AdapterDataGuruAd
             Update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    String nip = dm.getNip();
+                    Intent goInput = new Intent(ctx, MainAdminActivity.class);
+                    goInput.putExtra("UPDATE_GURU","update_guru");
+                    goInput.putExtra("ID_GURU",nip);
+                    ctx.startActivities(new Intent[]{goInput});
                 }
             });
             Delete.setOnClickListener(new View.OnClickListener() {

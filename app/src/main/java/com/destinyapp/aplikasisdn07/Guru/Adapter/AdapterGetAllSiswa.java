@@ -88,7 +88,11 @@ public class AdapterGetAllSiswa extends RecyclerView.Adapter<AdapterGetAllSiswa.
             Update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    String nis = dm.getNis();
+                    Intent goInput = new Intent(ctx, MainAdminActivity.class);
+                    goInput.putExtra("UPDATE_SISWA","update_siswa");
+                    goInput.putExtra("ID_SISWA",nis);
+                    ctx.startActivities(new Intent[]{goInput});
                 }
             });
             Delete.setOnClickListener(new View.OnClickListener() {

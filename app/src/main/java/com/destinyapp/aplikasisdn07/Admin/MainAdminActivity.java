@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.About.AboutSDN07;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.AbsenVerif;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.CheckAdminDashboard;
 import com.destinyapp.aplikasisdn07.Admin.Fragment.DataGuruAdmin;
@@ -130,12 +131,28 @@ public class MainAdminActivity extends AppCompatActivity
         String updateDataJadwal = data.getStringExtra("UPDATE_JADWAL");
         String idJadwal = data.getStringExtra("ID_JADWAL");
         //
+        //Update Data Guru
+        String updateDataGuru = data.getStringExtra("UPDATE_GURU");
+        String NIP = data.getStringExtra("ID_GURU");
+        //
+        //Update Data Siswa
+        String updateDataSiswa = data.getStringExtra("UPDATE_SISWA");
+        String nis = data.getStringExtra("ID_SISWA");
+        //
         if (inputGuru != null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Input");
+            bundle.putString("KEY_NIP","");
             fragment=new InputDataGuruAdmin();
+            fragment.setArguments(bundle);
         }else if(outputGuru != null){
             fragment=new DataGuruAdmin();
         }else if(inputSiswa != null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Input");
+            bundle.putString("KEY_NIS","");
             fragment=new InputDataSiswaAdmin();
+            fragment.setArguments(bundle);
         }else if(outputSiswa != null){
             fragment=new DataSiswaAdmin();
         }else if(inputKelas !=null){
@@ -157,7 +174,7 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(inputMapel !=null){
             Bundle bundle = new Bundle();
             bundle.putString("KEY_UPDATE","Input");
-            bundle.putString("KEY_KELAS","");
+            bundle.putString("KEY_MAPEL","");
             fragment=new InputDataMapel();
             fragment.setArguments(bundle);
         }else if(outputMapel !=null){
@@ -200,8 +217,20 @@ public class MainAdminActivity extends AppCompatActivity
         }else if(updateDataJadwal !=null){
             Bundle bundle = new Bundle();
             bundle.putString("KEY_UPDATE","Update");
-            bundle.putString("KEY_MAPEL",idJadwal);
-            fragment=new InputDataKelasAdmin();
+            bundle.putString("KEY_JADWAL",idJadwal);
+            fragment=new InputDataJadwal();
+            fragment.setArguments(bundle);
+        }else if(updateDataGuru !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Update");
+            bundle.putString("KEY_NIP",NIP);
+            fragment=new InputDataGuruAdmin();
+            fragment.setArguments(bundle);
+        }else if (updateDataSiswa !=null){
+            Bundle bundle = new Bundle();
+            bundle.putString("KEY_UPDATE","Update");
+            bundle.putString("KEY_NIS",nis);
+            fragment=new InputDataSiswaAdmin();
             fragment.setArguments(bundle);
         }
 
@@ -258,6 +287,9 @@ public class MainAdminActivity extends AppCompatActivity
 
         }else if (id == R.id.nav_logout_admin) {
             logout();
+        }else if (id == R.id.nav_about_sekolah) {
+            Intent intent = new Intent(this, AboutSDN07.class);
+            startActivity(intent);
         }else if (id == R.id.nav_about) {
             fragment=new AboutFragment();
         }

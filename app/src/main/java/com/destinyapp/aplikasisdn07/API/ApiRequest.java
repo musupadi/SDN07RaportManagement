@@ -189,8 +189,16 @@ public interface  ApiRequest {
     Call<ResponseModel> getNilaiSiswa(@Field("nis") String nis);
 
     @FormUrlEncoded
+    @POST("getDataGuruFromNip.php")
+    Call<ResponseModel> getDataGuru(@Field("nip") String nip);
+
+    @FormUrlEncoded
     @POST("getDataSiswa.php")
     Call<ResponseModel> getLoginSiswa(@Field("nis") String nis);
+
+    @FormUrlEncoded
+    @POST("getDataJadwal.php")
+    Call<ResponseModel> getDataJadwal(@Field("id_jadwal") String id_jadwal);
 
     @FormUrlEncoded
     @POST("getRaport.php")
@@ -220,6 +228,8 @@ public interface  ApiRequest {
                                         @Field("pictureguru") String pictureguru,
                                         @Field("alamat") String alamat);
 
+
+
     @FormUrlEncoded
     @POST("InsertDataSiswa.php")
     Call<ResponseModel> insertDataSiswa(@Field("nis") String nis,
@@ -232,6 +242,18 @@ public interface  ApiRequest {
                                         @Field("pekerjaanibu") String pekerjaanibu,
                                         @Field("id_kelas") String id_kelas,
                                         @Field("profile_siswa") String profile_siswa);
+
+    @FormUrlEncoded
+    @POST("UpdateDataSiswa.php")
+    Call<ResponseModel> UpdateSiswa(@Field("nis") String nis,
+                                        @Field("nama_siswa") String nama_siswa,
+                                        @Field("jk_siswa") String jk_siswa,
+                                        @Field("tahunajaran") String tahunajaran,
+                                        @Field("namaibu") String namaibu,
+                                        @Field("namaayah") String namaayah,
+                                        @Field("pekerjaanayah") String pekerjaanayah,
+                                        @Field("pekerjaanibu") String pekerjaanibu,
+                                        @Field("id_kelas") String id_kelas);
 
     @FormUrlEncoded
     @POST("InsertDataJadwal.php")
@@ -266,6 +288,10 @@ public interface  ApiRequest {
     @POST("getSiswaAutoText.php")
     Call<ResponseModel> getSiswaFrom(@Field("nama_siswa") String nama_siswa,
                                      @Field("nis") String nis);
+
+    @FormUrlEncoded
+    @POST("getDataSiswaFromNis.php")
+    Call<ResponseModel> getDataSiswaFromNIS(@Field("nis") String nis);
 
     @FormUrlEncoded
     @POST("getGuru.php")
@@ -327,4 +353,29 @@ public interface  ApiRequest {
     Call<ResponseModel> UpdateMapel(@Field("id_mapel") String id_mapel,
                                     @Field("nama_mapel") String nama_mapel,
                                     @Field("tingkat_kelas") String tingkat_kelas);
+
+    @FormUrlEncoded
+    @POST("UpdateDataGuru.php")
+    Call<ResponseModel> UpdateGuru(@Field("nip") String nip,
+                                   @Field("password") String password,
+                                   @Field("nama") String nama,
+                                   @Field("tempatlahir") String tempatlahir,
+                                   @Field("tanggalahir") String tanggalahir,
+                                   @Field("agama") String agama,
+                                   @Field("notelp") String notelp,
+                                   @Field("jabatan") String jabatan,
+                                   @Field("pendidikan") String pendidikan,
+                                   @Field("jk") String jk,
+                                   @Field("pictureguru") String pictureguru,
+                                   @Field("alamat") String alamat);
+
+    @FormUrlEncoded
+    @POST("UpdateJadwal.php")
+    Call<ResponseModel> UpdateJadwal(@Field("id_jadwal") String id_jadwal,
+                                    @Field("nip") String nip,
+                                    @Field("id_kelas") String tingkat_kelas,
+                                     @Field("id_mapel") String id_mapel,
+                                     @Field("hari") String hari,
+                                     @Field("dari_jam") String dari_jam,
+                                     @Field("sampai_jam") String sampai_jam);
 }

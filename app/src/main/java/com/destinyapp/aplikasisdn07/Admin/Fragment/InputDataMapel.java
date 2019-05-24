@@ -1,6 +1,7 @@
 package com.destinyapp.aplikasisdn07.Admin.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.destinyapp.aplikasisdn07.API.ApiRequest;
 import com.destinyapp.aplikasisdn07.API.RetroServer;
+import com.destinyapp.aplikasisdn07.Admin.MainAdminActivity;
 import com.destinyapp.aplikasisdn07.Models.ResponseModel;
 import com.destinyapp.aplikasisdn07.R;
 
@@ -52,6 +54,7 @@ public class InputDataMapel extends Fragment {
         final String IDMAPEL = this.getArguments().getString("KEY_MAPEL").toString();
         if (UPDATE.equals("Update")){
             getDataMapel(IDMAPEL);
+            Insert.setText("Update");
             Insert.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,6 +80,9 @@ public class InputDataMapel extends Fragment {
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if(response.body().getResponse().equals("Update")){
                     Toast.makeText(getActivity(),"Data Berhasil Terupdate",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("OUTPUT_MAPEL","output_mapel");
+                    getActivity().startActivities(new Intent[]{goInput});
                 }else{
                     Toast.makeText(getActivity(),"Data Mata Pelajaran Tidak Ditemukan",Toast.LENGTH_SHORT).show();
                 }
@@ -113,6 +119,9 @@ public class InputDataMapel extends Fragment {
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if(response.body().getResponse().equals("Insert")){
                     Toast.makeText(getActivity(),"Data Berhasil Terinput",Toast.LENGTH_SHORT).show();
+                    Intent goInput = new Intent(getActivity(), MainAdminActivity.class);
+                    goInput.putExtra("OUTPUT_MAPEL","output_mapel");
+                    getActivity().startActivities(new Intent[]{goInput});
                 }else{
                     Toast.makeText(getActivity(),"Data Mata Pelajaran Sudah Terisi",Toast.LENGTH_SHORT).show();
                 }
