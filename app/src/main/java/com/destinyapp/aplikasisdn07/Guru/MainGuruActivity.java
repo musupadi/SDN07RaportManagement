@@ -190,14 +190,8 @@ public class MainGuruActivity extends AppCompatActivity
         Fragment fragment = null;
         int id = item.getItemId();
 
-        if (id == R.id.nav_mengajarGuru) {
-            fragment = new GuruMengajarFragment();
-        } else if (id == R.id.nav_absenGuru) {
-            fragment = new AbsenSiswaGuru();
-        } else if (id == R.id.nav_penilaianGuru) {
-            fragment = new NilaiFragmentGuru();
-        }else if (id == R.id.nav_raportGuru) {
-            fragment = new RaportSiswaGuru();
+        if (id == R.id.nav_dashboard) {
+            fragment = new DashboardGuru();
         }else if (id == R.id.nav_data_diriGuru) {
 
         } else if (id == R.id.nav_keluarGuru) {
