@@ -76,7 +76,7 @@ public class PemberianNilaiFragment extends Fragment {
 
         //Logic
         getNamaKelas(idKelas);
-        getMapelAutoText(idKelas);
+        getMapelAutoText(tingkatKelas);
         dbHelper = new DB_Helper(getActivity());
         Cursor cursor = dbHelper.checkSession();
 
@@ -87,14 +87,14 @@ public class PemberianNilaiFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
-                    getIDMapel(idKelas,nis,"Auto");
+                    getIDMapel(tingkatKelas,idKelas,nis,"Auto");
                 }
             }
         });
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getIDMapel(idKelas,nis,"UI");
+                getIDMapel(tingkatKelas,idKelas,nis,"UI");
                 //checkData(nis);
             }
         });
@@ -132,7 +132,7 @@ public class PemberianNilaiFragment extends Fragment {
             }
         });
     }
-    private void getIDMapel(final String idKelas, final String nis, final String Checker){
+    private void getIDMapel(final String tingkatKelas,final String idKelas, final String nis, final String Checker){
         String nama_mapel=autoCompleteMapel.getEditableText().toString();
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
         Call<ResponseModel> getIDMapel = api.getIDMapel(nama_mapel);

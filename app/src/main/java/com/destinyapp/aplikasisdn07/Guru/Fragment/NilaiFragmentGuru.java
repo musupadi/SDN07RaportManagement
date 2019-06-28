@@ -216,7 +216,7 @@ public class NilaiFragmentGuru extends Fragment {
     }
     private void getMapel(String tingkatKelas){
         ApiRequest api = RetroServer.getClient().create(ApiRequest.class);
-        Call<ResponseModel> getMapel = api.getMapel(tingkatKelas);
+        Call<ResponseModel> getMapel = api.getAllMapel();
         getMapel.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
